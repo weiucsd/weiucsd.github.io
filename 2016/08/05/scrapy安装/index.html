@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>scrapy安装 | Trivia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="昨天本来应该开始学习Scrapy（一款爬虫工具）的，但是卡在Scrapy安装的过程上。究其根本，是因为Mac系统的six安装出了问题，终于在层层Google之后找到了解决办法。
+首先，在使用pip install Scrapy的时候，会卡在无法uninstall six上。然后我选择了–ignore-installed six的方法，虽然不会卡住，但在运行Scrapy的时候还是会报错。然后又搜到了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scrapy安装">
+<meta property="og:url" content="http://weiucsd.github.io/2016/08/05/scrapy安装/index.html">
+<meta property="og:site_name" content="Trivia">
+<meta property="og:description" content="昨天本来应该开始学习Scrapy（一款爬虫工具）的，但是卡在Scrapy安装的过程上。究其根本，是因为Mac系统的six安装出了问题，终于在层层Google之后找到了解决办法。
+首先，在使用pip install Scrapy的时候，会卡在无法uninstall six上。然后我选择了–ignore-installed six的方法，虽然不会卡住，但在运行Scrapy的时候还是会报错。然后又搜到了">
+<meta property="og:updated_time" content="2016-08-10T07:13:20.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scrapy安装">
+<meta name="twitter:description" content="昨天本来应该开始学习Scrapy（一款爬虫工具）的，但是卡在Scrapy安装的过程上。究其根本，是因为Mac系统的six安装出了问题，终于在层层Google之后找到了解决办法。
+首先，在使用pip install Scrapy的时候，会卡在无法uninstall six上。然后我选择了–ignore-installed six的方法，虽然不会卡住，但在运行Scrapy的时候还是会报错。然后又搜到了">
+  
+    <link rel="alternate" href="/atom.xml" title="Trivia" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Trivia</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://weiucsd.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-scrapy安装" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/08/05/scrapy安装/" class="article-date">
+  <time datetime="2016-08-05T20:53:42.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      scrapy安装
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>昨天本来应该开始学习Scrapy（一款爬虫工具）的，但是卡在Scrapy安装的过程上。究其根本，是因为Mac系统的six安装出了问题，终于在层层Google之后找到了解决办法。</p>
+<p>首先，在使用pip install Scrapy的时候，会卡在无法uninstall six上。然后我选择了–ignore-installed six的方法，虽然不会卡住，但在运行Scrapy的时候还是会报错。然后又搜到了这篇<a href="http://stackoverflow.com/questions/30964836/scrapy-throws-importerror-cannot-import-name-xmlrpc-client" target="_blank" rel="external">文章</a>，第一个答案给出了解决办法，但第二步会提示not permitted。好在在答案的回复给出了解决<a href="http://stackoverflow.com/questions/32659348/operation-not-permitted-when-on-root-el-capitan-rootless-disabled" target="_blank" rel="external">办法</a>，方法就是重启到recovery mode，然后运行csrutil disable。重启之后就可以删掉six并重新安装了。安全起见，我又重启到recovery mode重新csrutil enable。至此问题基本解决。</p>
+<p>这个问题应该只出现在mac OS上，整理一下解决方法方便以后使用。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://weiucsd.github.io/2016/08/05/scrapy安装/" data-id="cirpi3y9l0005drp75r03nxjz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/08/10/scrapy与crontab的结合/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          scrapy与crontab的结合
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/08/04/在hexo中输入中文/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">在hexo中输入中文</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/crontab/" style="font-size: 10px;">crontab</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/leetcode/" style="font-size: 20px;">leetcode</a> <a href="/tags/scrapy/" style="font-size: 20px;">scrapy</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">八月 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/08/10/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/10/leetcode_280/">sort</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/10/leetcode三刷/">leetcode三刷</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/10/scrapy与crontab的结合/">scrapy与crontab的结合</a>
+          </li>
+        
+          <li>
+            <a href="/2016/08/05/scrapy安装/">scrapy安装</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Trivia<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
