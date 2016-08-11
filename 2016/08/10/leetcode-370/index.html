@@ -8,26 +8,23 @@
 
 <title>
   
-    scrapy与crontab的结合
+    leetcode 370. Range Addition
   
 </title>
 
-<meta name="description" content="搞了一天终于能够用crontab自动运行scrapy了。
-首先crontab是一款可以实现自动运行的工具，最短每分钟执行一次。由于我们需要不停的爬取网站信息，所以需要软件在后台自动运行scrapy。方法很简单，规定每到什么时间执行什么命令就可以了。
-那么开始吧，把命令提交给crontab，等了一分钟、两分钟，什么也没有出现。当时我是懵b的，道理我都懂，但是为什么执行不了XD。我的crontab内容">
+<meta name="description" content="Assume you have an array of length n initialized with all 0’s and are given k update operations.
+Each operation is represented as a triplet: [startIndex, endIndex, inc] which increments each element o">
 <meta property="og:type" content="article">
-<meta property="og:title" content="scrapy与crontab的结合">
-<meta property="og:url" content="http://weiucsd.github.io/2016/08/10/scrapy与crontab的结合/index.html">
+<meta property="og:title" content="leetcode 370. Range Addition">
+<meta property="og:url" content="http://weiucsd.github.io/2016/08/10/leetcode-370/index.html">
 <meta property="og:site_name" content="Trivia">
-<meta property="og:description" content="搞了一天终于能够用crontab自动运行scrapy了。
-首先crontab是一款可以实现自动运行的工具，最短每分钟执行一次。由于我们需要不停的爬取网站信息，所以需要软件在后台自动运行scrapy。方法很简单，规定每到什么时间执行什么命令就可以了。
-那么开始吧，把命令提交给crontab，等了一分钟、两分钟，什么也没有出现。当时我是懵b的，道理我都懂，但是为什么执行不了XD。我的crontab内容">
-<meta property="og:updated_time" content="2016-08-10T20:53:06.000Z">
+<meta property="og:description" content="Assume you have an array of length n initialized with all 0’s and are given k update operations.
+Each operation is represented as a triplet: [startIndex, endIndex, inc] which increments each element o">
+<meta property="og:updated_time" content="2016-08-11T00:10:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="scrapy与crontab的结合">
-<meta name="twitter:description" content="搞了一天终于能够用crontab自动运行scrapy了。
-首先crontab是一款可以实现自动运行的工具，最短每分钟执行一次。由于我们需要不停的爬取网站信息，所以需要软件在后台自动运行scrapy。方法很简单，规定每到什么时间执行什么命令就可以了。
-那么开始吧，把命令提交给crontab，等了一分钟、两分钟，什么也没有出现。当时我是懵b的，道理我都懂，但是为什么执行不了XD。我的crontab内容">
+<meta name="twitter:title" content="leetcode 370. Range Addition">
+<meta name="twitter:description" content="Assume you have an array of length n initialized with all 0’s and are given k update operations.
+Each operation is represented as a triplet: [startIndex, endIndex, inc] which increments each element o">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -133,10 +130,10 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-scrapy与crontab的结合" class="article article-type-post">
+          <article id="post-leetcode-370" class="article article-type-post">
   
     <h1 class="article-header">
-      scrapy与crontab的结合
+      leetcode 370. Range Addition
     </h1>
   
   
@@ -150,17 +147,16 @@
 
     
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crontab/">crontab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 	</span>
 
 
   </div>
   <div class="article-entry">
-    <p>搞了一天终于能够用crontab自动运行scrapy了。</p>
-<p>首先crontab是一款可以实现自动运行的工具，最短每分钟执行一次。由于我们需要不停的爬取网站信息，所以需要软件在后台自动运行scrapy。方法很简单，规定每到什么时间执行什么命令就可以了。</p>
-<p>那么开始吧，把命令提交给crontab，等了一分钟、两分钟，什么也没有出现。当时我是懵b的，道理我都懂，但是为什么执行不了XD。我的crontab内容是<em> </em> <em> </em> <em> sh xxx.sh，xxx.sh里面就是scrapy crawl yyy。当然，xxx.sh肯定是没有执行成功的，那么干脆把crontab的内容换成</em> <em> </em> <em> </em> echo “Hello”吧。Of course还是什么都没有。这时注意到时不时terminal就来一句：You have new mail. 原来crontab会把每次的执行结果发邮件给我，但至少这说明crontab是好使的。但是sh还是总不成功，在网上看了很多帖子、博客，总是没有get the point. 终于，找到了关键的一句话：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/bin</div></pre></td></tr></table></figure></p>
-<p>原因大概是这样的，crontab执行的时候找不到scrapy这个命令，而这个命令在/usr/local/bin里，所以需要加入这个路径，然后就可以正常执行scrapy了。但是还有一个问题，每分钟一封邮件，一会感觉terminal要炸了XD。这个也找到了答案，可以在<em> </em> <em> </em> * sh xxx.sh后面加上 &gt;&gt; file 2&gt;&amp;1，输出就会写入这个file里了。最后附上清理mail的方法，不然每过一段时间都会提示有new mail。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mail</div><div class="line">$ delete *</div><div class="line">$ q</div></pre></td></tr></table></figure></p>
-<p>写的有些啰嗦，主要是想记录一下今天解决的两个问题。不用把问题交给明天的感觉真好。</p>
+    <p>Assume you have an array of length n initialized with all 0’s and are given k update operations.</p>
+<p>Each operation is represented as a triplet: [startIndex, endIndex, inc] which increments each element of subarray A[startIndex … endIndex] (startIndex and endIndex inclusive) with inc.</p>
+<p>Return the modified array after all k operations were executed.<br><a href="https://leetcode.com/problems/range-addition/" target="_blank" rel="external">原题地址</a></p>
+<p>Google OA题。思路就是先把每一步的操作加、减到开始、结束位，最后累积求和。<br>不知道为什么速度不是很快，代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getModifiedArray(<span class="keyword">int</span> length, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; updates) &#123;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; re(length + <span class="number">1</span>, <span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp; vec: updates) &#123;</div><div class="line">        re[vec[<span class="number">0</span>]] += vec[<span class="number">2</span>];</div><div class="line">        re[vec[<span class="number">1</span>] + <span class="number">1</span>] -= vec[<span class="number">2</span>];</div><div class="line">    &#125;</div><div class="line">    re.pop_back();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; length; i++)</div><div class="line">        re[i] += re[i - <span class="number">1</span>];</div><div class="line">    <span class="keyword">return</span> re;        </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
   </div>
   <footer class="article-footer">
