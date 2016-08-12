@@ -8,23 +8,23 @@
 
 <title>
   
-    scrapy安装
+    leetcode-245. Shortest Word Distance III
   
 </title>
 
-<meta name="description" content="昨天本来应该开始学习Scrapy（一款爬虫工具）的，但是卡在Scrapy安装的过程上。究其根本，是因为Mac系统的six安装出了问题，终于在层层Google之后找到了解决办法。
-首先，在使用pip install Scrapy的时候，会卡在无法uninstall six上。然后我选择了–ignore-installed six的方法，虽然不会卡住，但在运行Scrapy的时候还是会报错。然后又搜到了">
+<meta name="description" content="This is a follow up of Shortest Word Distance. The only difference is now word1 could be the same as word2.
+Given a list of words and two words word1 and word2, return the shortest distance between th">
 <meta property="og:type" content="article">
-<meta property="og:title" content="scrapy安装">
-<meta property="og:url" content="http://weiucsd.github.io/2016/08/05/scrapy安装/index.html">
+<meta property="og:title" content="leetcode-245. Shortest Word Distance III">
+<meta property="og:url" content="http://weiucsd.github.io/2016/08/11/leetcode-245/index.html">
 <meta property="og:site_name" content="Trivia">
-<meta property="og:description" content="昨天本来应该开始学习Scrapy（一款爬虫工具）的，但是卡在Scrapy安装的过程上。究其根本，是因为Mac系统的six安装出了问题，终于在层层Google之后找到了解决办法。
-首先，在使用pip install Scrapy的时候，会卡在无法uninstall six上。然后我选择了–ignore-installed six的方法，虽然不会卡住，但在运行Scrapy的时候还是会报错。然后又搜到了">
-<meta property="og:updated_time" content="2016-08-10T07:13:20.000Z">
+<meta property="og:description" content="This is a follow up of Shortest Word Distance. The only difference is now word1 could be the same as word2.
+Given a list of words and two words word1 and word2, return the shortest distance between th">
+<meta property="og:updated_time" content="2016-08-12T00:21:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="scrapy安装">
-<meta name="twitter:description" content="昨天本来应该开始学习Scrapy（一款爬虫工具）的，但是卡在Scrapy安装的过程上。究其根本，是因为Mac系统的six安装出了问题，终于在层层Google之后找到了解决办法。
-首先，在使用pip install Scrapy的时候，会卡在无法uninstall six上。然后我选择了–ignore-installed six的方法，虽然不会卡住，但在运行Scrapy的时候还是会报错。然后又搜到了">
+<meta name="twitter:title" content="leetcode-245. Shortest Word Distance III">
+<meta name="twitter:description" content="This is a follow up of Shortest Word Distance. The only difference is now word1 could be the same as word2.
+Given a list of words and two words word1 and word2, return the shortest distance between th">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -130,32 +130,36 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-scrapy安装" class="article article-type-post">
+          <article id="post-leetcode-245" class="article article-type-post">
   
     <h1 class="article-header">
-      scrapy安装
+      leetcode-245. Shortest Word Distance III
     </h1>
   
   
 
   <div class="article-info">
     <span class="article-date">
-  2016-08-05
+  2016-08-11
 </span>
 
     
 
     
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 	</span>
 
 
   </div>
   <div class="article-entry">
-    <p>昨天本来应该开始学习Scrapy（一款爬虫工具）的，但是卡在Scrapy安装的过程上。究其根本，是因为Mac系统的six安装出了问题，终于在层层Google之后找到了解决办法。</p>
-<p>首先，在使用pip install Scrapy的时候，会卡在无法uninstall six上。然后我选择了–ignore-installed six的方法，虽然不会卡住，但在运行Scrapy的时候还是会报错。然后又搜到了这篇<a href="http://stackoverflow.com/questions/30964836/scrapy-throws-importerror-cannot-import-name-xmlrpc-client" target="_blank" rel="external">文章</a>，第一个答案给出了解决办法，但第二步会提示not permitted。好在在答案的回复给出了解决<a href="http://stackoverflow.com/questions/32659348/operation-not-permitted-when-on-root-el-capitan-rootless-disabled" target="_blank" rel="external">办法</a>，方法就是重启到recovery mode，然后运行csrutil disable。重启之后就可以删掉six并重新安装了。安全起见，我又重启到recovery mode重新csrutil enable。至此问题基本解决。</p>
-<p>这个问题应该只出现在mac OS上，整理一下解决方法方便以后使用。</p>
+    <p>This is a follow up of Shortest Word Distance. The only difference is now word1 could be the same as word2.</p>
+<p>Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.</p>
+<p>word1 and word2 may be the same and they represent two individual words in the list.</p>
+<p>For example,<br>Assume that words = [“practice”, “makes”, “perfect”, “coding”, “makes”].</p>
+<p>Given word1 = “makes”, word2 = “coding”, return 1.<br>Given word1 = “makes”, word2 = “makes”, return 3.</p>
+<p>Note:<br>You may assume word1 and word2 are both in the list.<br><a href="https://leetcode.com/problems/shortest-word-distance-iii/" target="_blank" rel="external">原题地址</a></p>
+<p>比Shortest Word Distance的第三种解法多一个判断。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">shortestWordDistance</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words, <span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> idx = <span class="number">-1</span>, dist = INT_MAX;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.size(); i++) &#123;</div><div class="line">        <span class="keyword">if</span> (words[i] == word1 || words[i] == word2) &#123;</div><div class="line">            <span class="keyword">if</span> (idx != <span class="number">-1</span> &amp;&amp; (word1 == word2 || words[i] != words[idx]))</div><div class="line">                dist = min(dist, i - idx);</div><div class="line">            idx = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dist;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
   </div>
   <footer class="article-footer">
