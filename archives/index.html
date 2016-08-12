@@ -169,6 +169,7 @@
 <p>经过查找资料和测试，需要修改的地方有两个。一是建表的时候，需要在create table之后加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DEFAULT CHARACTER SET = utf8</div></pre></td></tr></table></figure></p>
 <p>二是在连接到数据库时，在MySQLdb.connect里加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">charset =&apos;utf8&apos;</div></pre></td></tr></table></figure></p>
 <p>执行这两步后，即可正常显示中文。</p>
+<p>————————–BTW————————–<br>在做php显示的时候也遇到了乱码的问题，就不另开贴了。在连接到数据库后加上下面的语句即可。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqli_set_charset($conn,<span class="string">"utf8"</span>);</div></pre></td></tr></table></figure></p>
 
         
       </div>
