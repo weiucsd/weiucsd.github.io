@@ -77,7 +77,7 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">Tag</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">3</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
               </li>
             
           
@@ -125,6 +125,51 @@
       
           <h1>scrapy</h1>
 
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/12/scarpy-utf-8/" >
+  scrapy 中文乱码与utf-8
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/12/scarpy-utf-8/"><span class="article-date">
+  2016-08-12
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>记录一下刚才解决的有关scrapy中文乱码问题。</p>
+<p>之前在mac上运行scrapy的时候没有关心过这一点，可能是系统默认字符就是utf-8。搬到linux服务器上之后会出现如下的错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UnicodeEncodeError: &apos;latin-1&apos; codec can&apos;t encode characters in position 96-106: ordinal not in range(256)</div></pre></td></tr></table></figure></p>
+<p>而字符串会变成这样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">u&apos;\u98ce\u6b66\u0416\u9f99\u884c&apos;</div></pre></td></tr></table></figure></p>
+<p>经过查找资料和测试，需要修改的地方有两个。一是建表的时候，需要在create table之后加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DEFAULT CHARACTER SET = utf8</div></pre></td></tr></table></figure></p>
+<p>二是在连接到数据库时，在MySQLdb.connect里加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">charset =&apos;utf8&apos;</div></pre></td></tr></table></figure></p>
+<p>执行这两步后，即可正常显示中文。</p>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
 
   
   

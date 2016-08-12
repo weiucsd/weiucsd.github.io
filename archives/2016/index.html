@@ -77,7 +77,7 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">Tag</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">3</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
               </li>
             
           
@@ -135,6 +135,49 @@
           <h1><a href="/archives/2016" class="archive-year">2016</a></h1>
         </div>
         <div class="post-list">
+    
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/12/scarpy-utf-8/" >
+  scrapy 中文乱码与utf-8
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/12/scarpy-utf-8/"><span class="article-date">
+  2016-08-12
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>记录一下刚才解决的有关scrapy中文乱码问题。</p>
+<p>之前在mac上运行scrapy的时候没有关心过这一点，可能是系统默认字符就是utf-8。搬到linux服务器上之后会出现如下的错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UnicodeEncodeError: &apos;latin-1&apos; codec can&apos;t encode characters in position 96-106: ordinal not in range(256)</div></pre></td></tr></table></figure></p>
+<p>而字符串会变成这样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">u&apos;\u98ce\u6b66\u0416\u9f99\u884c&apos;</div></pre></td></tr></table></figure></p>
+<p>经过查找资料和测试，需要修改的地方有两个。一是建表的时候，需要在create table之后加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DEFAULT CHARACTER SET = utf8</div></pre></td></tr></table></figure></p>
+<p>二是在连接到数据库时，在MySQLdb.connect里加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">charset =&apos;utf8&apos;</div></pre></td></tr></table></figure></p>
+<p>执行这两步后，即可正常显示中文。</p>
+
+        
+      </div>
+    </div>
+
+  
+
+  
+  
     
   
 
@@ -501,46 +544,6 @@
 <p>那么开始吧，把命令提交给crontab，等了一分钟、两分钟，什么也没有出现。当时我是懵b的，道理我都懂，但是为什么执行不了XD。我的crontab内容是<em> </em> <em> </em> <em> sh xxx.sh，xxx.sh里面就是scrapy crawl yyy。当然，xxx.sh肯定是没有执行成功的，那么干脆把crontab的内容换成</em> <em> </em> <em> </em> echo “Hello”吧。Of course还是什么都没有。这时注意到时不时terminal就来一句：You have new mail. 原来crontab会把每次的执行结果发邮件给我，但至少这说明crontab是好使的。但是sh还是总不成功，在网上看了很多帖子、博客，总是没有get the point. 终于，找到了关键的一句话：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/bin</div></pre></td></tr></table></figure></p>
 <p>原因大概是这样的，crontab执行的时候找不到scrapy这个命令，而这个命令在/usr/local/bin里，所以需要加入这个路径，然后就可以正常执行scrapy了。但是还有一个问题，每分钟一封邮件，一会感觉terminal要炸了XD。这个也找到了答案，可以在<em> </em> <em> </em> * sh xxx.sh后面加上 &gt;&gt; file 2&gt;&amp;1，输出就会写入这个file里了。最后附上清理mail的方法，不然每过一段时间都会提示有new mail。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mail</div><div class="line">$ delete *</div><div class="line">$ q</div></pre></td></tr></table></figure></p>
 <p>写的有些啰嗦，主要是想记录一下今天解决的两个问题。不用把问题交给明天的感觉真好。</p>
-
-        
-      </div>
-    </div>
-
-  
-
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/05/scrapy安装/" >
-  scrapy安装
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/05/scrapy安装/"><span class="article-date">
-  2016-08-05
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <p>昨天本来应该开始学习Scrapy（一款爬虫工具）的，但是卡在Scrapy安装的过程上。究其根本，是因为Mac系统的six安装出了问题，终于在层层Google之后找到了解决办法。</p>
-<p>首先，在使用pip install Scrapy的时候，会卡在无法uninstall six上。然后我选择了–ignore-installed six的方法，虽然不会卡住，但在运行Scrapy的时候还是会报错。然后又搜到了这篇<a href="http://stackoverflow.com/questions/30964836/scrapy-throws-importerror-cannot-import-name-xmlrpc-client" target="_blank" rel="external">文章</a>，第一个答案给出了解决办法，但第二步会提示not permitted。好在在答案的回复给出了解决<a href="http://stackoverflow.com/questions/32659348/operation-not-permitted-when-on-root-el-capitan-rootless-disabled" target="_blank" rel="external">办法</a>，方法就是重启到recovery mode，然后运行csrutil disable。重启之后就可以删掉six并重新安装了。安全起见，我又重启到recovery mode重新csrutil enable。至此问题基本解决。</p>
-<p>这个问题应该只出现在mac OS上，整理一下解决方法方便以后使用。</p>
 
         
       </div>

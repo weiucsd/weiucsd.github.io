@@ -77,7 +77,7 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">Tag</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">3</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
               </li>
             
           
@@ -124,6 +124,48 @@
         <div style="max-width: 1000px">
       
           
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/05/scrapy安装/" >
+  scrapy安装
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/05/scrapy安装/"><span class="article-date">
+  2016-08-05
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>昨天本来应该开始学习Scrapy（一款爬虫工具）的，但是卡在Scrapy安装的过程上。究其根本，是因为Mac系统的six安装出了问题，终于在层层Google之后找到了解决办法。</p>
+<p>首先，在使用pip install Scrapy的时候，会卡在无法uninstall six上。然后我选择了–ignore-installed six的方法，虽然不会卡住，但在运行Scrapy的时候还是会报错。然后又搜到了这篇<a href="http://stackoverflow.com/questions/30964836/scrapy-throws-importerror-cannot-import-name-xmlrpc-client" target="_blank" rel="external">文章</a>，第一个答案给出了解决办法，但第二步会提示not permitted。好在在答案的回复给出了解决<a href="http://stackoverflow.com/questions/32659348/operation-not-permitted-when-on-root-el-capitan-rootless-disabled" target="_blank" rel="external">办法</a>，方法就是重启到recovery mode，然后运行csrutil disable。重启之后就可以删掉six并重新安装了。安全起见，我又重启到recovery mode重新csrutil enable。至此问题基本解决。</p>
+<p>这个问题应该只出现在mac OS上，整理一下解决方法方便以后使用。</p>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
 
   
   
