@@ -8,7 +8,7 @@
 
 <title>
   
-    标签: leetcode
+    Tag: leetcode
   
 </title>
 
@@ -76,8 +76,8 @@
           
             
               <li class="tag-list-container">
-                <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
               </li>
             
           
@@ -125,6 +125,50 @@
       
           <h1>leetcode</h1>
 
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/15/leetcode-288/" >
+  leetcode-288. Unique Word Abbreviation
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/15/leetcode-288/"><span class="article-date">
+  2016-08-15
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>An abbreviation of a word follows the form <first letter=""><number><last letter="">. Below are some examples of word abbreviations:<br>a) it                      –&gt; it    (no abbreviation)<br>b) d|o|g                   –&gt; d1g<br>c) i|nternationalizatio|n  –&gt; i18n<br>d) l|ocalizatio|n          –&gt; l10n</last></number></first></p>
+<p>Assume you have a dictionary and given a word, find whether its abbreviation is unique in the dictionary. A word’s abbreviation is unique if no other word from the dictionary has the same abbreviation.</p>
+<p>Example:<br>Given dictionary = [ “deer”, “door”, “cake”, “card” ]</p>
+<p>isUnique(“dear”) -&gt; false<br>isUnique(“cart”) -&gt; true<br>isUnique(“cane”) -&gt; false<br>isUnique(“make”) -&gt; true<br><a href="https://leetcode.com/problems/unique-word-abbreviation/" target="_blank" rel="external">原题地址</a></p>
+<p>一道easy题，然而并不是很easy。思路很明确，用hashtable记下字典里的缩写，然后比较所给的单词。有一个细节是，如果所给的词在字典里有，并且这个词的缩写在字典的缩写里是唯一的，是要返回true的。直接的解决办法是在hashtable里记下缩写对应的每个单词或者他们的index，但是在网上看到了更好的办法。代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> ValidWordAbbr &#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; hashmap;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    ValidWordAbbr(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &amp;dictionary) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="built_in">string</span>&amp; s : dictionary) &#123;</div><div class="line">            <span class="built_in">string</span> abbr = toAbbr(s);</div><div class="line">            <span class="keyword">if</span> (hashmap.count(abbr) &gt; <span class="number">0</span> &amp;&amp; hashmap[abbr] != s)</div><div class="line">                hashmap[abbr] = <span class="string">""</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                hashmap[abbr] = s;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">toAbbr</span><span class="params">(<span class="built_in">string</span> word)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (word.size() &lt;= <span class="number">2</span>)</div><div class="line">            <span class="keyword">return</span> word;</div><div class="line">        <span class="keyword">return</span> word[<span class="number">0</span>] + to_string(word.size() - <span class="number">2</span>) + word.back();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isUnique</span><span class="params">(<span class="built_in">string</span> word)</span> </span>&#123;</div><div class="line">        <span class="built_in">string</span> abbr = toAbbr(word);</div><div class="line">        <span class="keyword">if</span> (hashmap.count(abbr) == <span class="number">0</span> || hashmap[abbr] == word)</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// Your ValidWordAbbr object will be instantiated and called as such:</span></div><div class="line"><span class="comment">// ValidWordAbbr vwa(dictionary);</span></div><div class="line"><span class="comment">// vwa.isUnique("hello");</span></div><div class="line"><span class="comment">// vwa.isUnique("anotherWord");</span></div></pre></td></tr></table></figure></p>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
 
   
   
@@ -532,47 +576,11 @@
     </div>
   
 
-  
-  
-    <div class="post-list">
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/10/leetcode三刷/" >
-  leetcode三刷
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/10/leetcode三刷/"><span class="article-date">
-  2016-08-10
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</span>
 
 
-      </div>
-      <div class="article-entry">
-        
-          <p>之前断断续续刷了两波leetcode，最近面试发现又忘了差不多了。今天借到了一个会员账号，开始三刷之旅。借鉴一下其他博主的经验，这里把做过的题的思路都整理下来，方便以后回顾。我们优先从上锁题开始吧！</p>
-
-        
-      </div>
-    </div>
-
-  
-    </div>
-  
-
-
+  <div class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/tags/leetcode/page/2/">2</a><a class="extend next" rel="next" href="/tags/leetcode/page/2/">Next</a>
+  </div>
 
 
 
