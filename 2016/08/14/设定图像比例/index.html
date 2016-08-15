@@ -8,16 +8,23 @@
 
 <title>
   
-    Tag: hexo
+    设定图像比例
   
 </title>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Trivia">
-<meta property="og:url" content="http://weiucsd.github.io/tags/hexo/index.html">
+<meta name="description" content="问题：我们现在有很多图像，它们大小不一但是大致相似。我们需要保持图像的宽度一致，按照css的默认设置，图像会保持原始比例，那么图像的高度会有区别，在网页排版时因为有高有低会出现空白的地方。我们需要解决的问题就是把所有图像设为同样的比例，比如16:9.
+解决方法：我们可以给img外面套一层框架，设置框架的宽高比并隐藏溢出部分，代码如下：123456div.image-container &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设定图像比例">
+<meta property="og:url" content="http://weiucsd.github.io/2016/08/14/设定图像比例/index.html">
 <meta property="og:site_name" content="Trivia">
+<meta property="og:description" content="问题：我们现在有很多图像，它们大小不一但是大致相似。我们需要保持图像的宽度一致，按照css的默认设置，图像会保持原始比例，那么图像的高度会有区别，在网页排版时因为有高有低会出现空白的地方。我们需要解决的问题就是把所有图像设为同样的比例，比如16:9.
+解决方法：我们可以给img外面套一层框架，设置框架的宽高比并隐藏溢出部分，代码如下：123456div.image-container &amp;#123;">
+<meta property="og:updated_time" content="2016-08-15T07:02:43.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Trivia">
+<meta name="twitter:title" content="设定图像比例">
+<meta name="twitter:description" content="问题：我们现在有很多图像，它们大小不一但是大致相似。我们需要保持图像的宽度一致，按照css的默认设置，图像会保持原始比例，那么图像的高度会有区别，在网页排版时因为有高有低会出现空白的地方。我们需要解决的问题就是把所有图像设为同样的比例，比如16:9.
+解决方法：我们可以给img外面套一层框架，设置框架的宽高比并隐藏溢出部分，代码如下：123456div.image-container &amp;#123;">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -123,48 +130,56 @@
       
         <div style="max-width: 1000px">
       
-          <h1>hexo</h1>
-
-
+          <article id="post-设定图像比例" class="article article-type-post">
+  
+    <h1 class="article-header">
+      设定图像比例
+    </h1>
   
   
-    <div class="post-list">
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/04/在hexo中输入中文/" >
-  在hexo中输入中文
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/04/在hexo中输入中文/"><span class="article-date">
-  2016-08-04
+  <div class="article-info">
+    <span class="article-date">
+  2016-08-14
 </span>
-</a>
-        
 
-        
+    
+
+    
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
 	</span>
 
 
-      </div>
-      <div class="article-entry">
-        
-          <p>在命令行直接输入hexo new 中文名称时，生成的md文件会出现乱码，即使在_config.yml修改语言也没有效果。目前没找到完美的解决方法，可替换的选择是hexo new一个英文名称，然后再修改title。</p>
+  </div>
+  <div class="article-entry">
+    <p><b>问题</b>：我们现在有很多图像，它们大小不一但是大致相似。我们需要保持图像的宽度一致，按照css的默认设置，图像会保持原始比例，那么图像的高度会有区别，在网页排版时因为有高有低会出现空白的地方。我们需要解决的问题就是把所有图像设为同样的比例，比如16:9.</p>
+<p><b>解决方法</b>：我们可以给img外面套一层框架，设置框架的宽高比并隐藏溢出部分，代码如下：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">div</span><span class="selector-class">.image-container</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">    <span class="attribute">height</span>: <span class="number">0</span>;</div><div class="line">    <span class="attribute">padding-bottom</span>: <span class="number">56.25%</span>;</div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后html里可以这样使用：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"image-container"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"img_src"</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
 
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
         
-      </div>
-    </div>
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
 
-  
-    </div>
-  
+
+    
+
+  </footer>
+</article>
+
 
 
 
