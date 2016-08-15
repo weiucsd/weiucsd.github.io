@@ -77,7 +77,7 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">标签</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">10</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
               </li>
             
           
@@ -135,6 +135,45 @@
           <h1><a href="/archives/2016" class="archive-year">2016</a></h1>
         </div>
         <div class="post-list">
+    
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/15/word-wrap/" >
+  限制文字单行显示，超出部分省略号
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/15/word-wrap/"><span class="article-date">
+  2016-08-15
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>需要三句话。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">white-space</span>: <span class="selector-tag">nowrap</span>;</div><div class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</div><div class="line"><span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;</div></pre></td></tr></table></figure></p>
+<p>解释一下。第一句是说文字显示不换行，第二句说溢出部分隐藏，第三局说溢出时显示省略号。<br>所以能够实现以上功能。</p>
+
+        
+      </div>
+    </div>
+
+  
+
+  
+  
     
   
 
@@ -514,48 +553,6 @@
         
           <p>记录一下此刻我复杂的心情。</p>
 <p>为什么会再安装呢？因为之前是在本机上装的，现在要在服务器上再装一次。本以为有过一次经验的我会顺风顺水，结果是图样图森破，不过挣扎了一晚上总算是把scrapy给装上了。本来想记录一下出现的问题及解决方法，但是问题太多实在记不住了，而且出现的问题和第一次的也完全不一样。与其记住一次问题的解决答案，不如掌握解决问题的方法（才不是因为脑子不好记不住呢，哼唧）。下一次安装scrapy的时候应该也会出现一万个问题吧，只要不断的把出现的问题丢给google，相信问题一定会解决的😂。</p>
-
-        
-      </div>
-    </div>
-
-  
-
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/10/leetcode-167/" >
-  leetcode 167. Two Sum II - Input array is sorted
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/10/leetcode-167/"><span class="article-date">
-  2016-08-10
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <p>Given an array of integers that is already sorted in ascending order, find two numbers such that they add up to a specific target number.</p>
-<p>The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.</p>
-<p>You may assume that each input would have exactly one solution.</p>
-<p>Input: numbers={2, 7, 11, 15}, target=9<br>Output: index1=1, index2=2<br><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="external">原题地址</a></p>
-<p>思路：Two pointers，从两边向中间找。代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target) &#123;</div><div class="line">    <span class="keyword">int</span> begin = <span class="number">0</span>, end = numbers.size() - <span class="number">1</span>;</div><div class="line">    <span class="keyword">while</span> (end &gt; begin) &#123;</div><div class="line">        <span class="keyword">int</span> sum = numbers[begin] + numbers[end];</div><div class="line">        <span class="keyword">if</span> (sum &lt; target)</div><div class="line">            begin++;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (sum &gt; target)</div><div class="line">            end--;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="keyword">break</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; re = &#123;begin + <span class="number">1</span>, end + <span class="number">1</span>&#125;;</div><div class="line">    <span class="keyword">return</span> re;</div></pre></td></tr></table></figure></p>
 
         
       </div>
