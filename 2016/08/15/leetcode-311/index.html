@@ -8,16 +8,26 @@
 
 <title>
   
-    標籤: hexo
+    leetcode-311. Sparse Matrix Multiplication
   
 </title>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Trivia">
-<meta property="og:url" content="http://weiucsd.github.io/tags/hexo/index.html">
+<meta name="description" content="Given two sparse matrices A and B, return the result of AB.
+You may assume that A’s column number is equal to B’s row number.原题地址
+虽然归在hash table类别下，似乎不用hash table会更快一些。代码如下：12345678910111213vector&amp;lt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-311. Sparse Matrix Multiplication">
+<meta property="og:url" content="http://weiucsd.github.io/2016/08/15/leetcode-311/index.html">
 <meta property="og:site_name" content="Trivia">
+<meta property="og:description" content="Given two sparse matrices A and B, return the result of AB.
+You may assume that A’s column number is equal to B’s row number.原题地址
+虽然归在hash table类别下，似乎不用hash table会更快一些。代码如下：12345678910111213vector&amp;lt;">
+<meta property="og:updated_time" content="2016-08-15T23:01:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Trivia">
+<meta name="twitter:title" content="leetcode-311. Sparse Matrix Multiplication">
+<meta name="twitter:description" content="Given two sparse matrices A and B, return the result of AB.
+You may assume that A’s column number is equal to B’s row number.原题地址
+虽然归在hash table类别下，似乎不用hash table会更快一些。代码如下：12345678910111213vector&amp;lt;">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -123,48 +133,52 @@
       
         <div style="max-width: 1000px">
       
-          <h1>hexo</h1>
-
-
+          <article id="post-leetcode-311" class="article article-type-post">
+  
+    <h1 class="article-header">
+      leetcode-311. Sparse Matrix Multiplication
+    </h1>
   
   
-    <div class="post-list">
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/04/在hexo中输入中文/" >
-  在hexo中输入中文
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/04/在hexo中输入中文/"><span class="article-date">
-  2016-08-04
+  <div class="article-info">
+    <span class="article-date">
+  2016-08-15
 </span>
-</a>
+
+    
+
+    
+
+  </div>
+  <div class="article-entry">
+    <p>Given two sparse matrices A and B, return the result of AB.</p>
+<p>You may assume that A’s column number is equal to B’s row number.<br><a href="https://leetcode.com/problems/sparse-matrix-multiplication/" target="_blank" rel="external">原题地址</a></p>
+<p>虽然归在hash table类别下，似乎不用hash table会更快一些。代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; multiply(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; B) &#123;</div><div class="line">    <span class="keyword">int</span> row = A.size(), col = B[<span class="number">0</span>].size(), n = B.size();</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; C(row, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col, <span class="number">0</span>));</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++) &#123;</div><div class="line">            <span class="keyword">if</span> (A[i][k] != <span class="number">0</span>)</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j++)</div><div class="line">                    <span class="keyword">if</span> (B[k][j] != <span class="number">0</span>)</div><div class="line">                        C[i][j] += A[i][k] * B[k][j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> C;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+  </div>
+  <footer class="article-footer">
+    
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.en" target="_blank" title="姓名標示-相同方式分享">
+      <img src="/images/cc/cc.png">
+      
+          <img src="/images/cc/by.png">
         
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        本著作係採用創用 CC 姓名標示-相同方式分享 4.0 國際 授權條款授權.
+      </span>
+    </a>
+  </div>
 
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</span>
 
+    
 
-      </div>
-      <div class="article-entry">
-        
-          <p>在命令行直接输入hexo new 中文名称时，生成的md文件会出现乱码，即使在_config.yml修改语言也没有效果。目前没找到完美的解决方法，可替换的选择是hexo new一个英文名称，然后再修改title。</p>
+  </footer>
+</article>
 
-        
-      </div>
-    </div>
-
-  
-    </div>
-  
 
 
 
