@@ -76,8 +76,8 @@
           
             
               <li class="tag-list-container">
-                <a href="javascript:;">標籤</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
               </li>
             
           
@@ -124,6 +124,49 @@
         <div style="max-width: 1000px">
       
           
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/17/leetcode-246/" >
+  leetcode-246. Strobogrammatic Number
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/17/leetcode-246/"><span class="article-date">
+  2016-08-17
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>A strobogrammatic number is a number that looks the same when rotated 180 degrees (looked at upside down).</p>
+<p>Write a function to determine if a number is strobogrammatic. The number is represented as a string.</p>
+<p>For example, the numbers “69”, “88”, and “818” are all strobogrammatic.<br><a href="https://leetcode.com/problems/strobogrammatic-number/" target="_blank" rel="external">原题地址</a></p>
+<p>首尾对比，只有五种匹配的方式：0-0, 1-1, 8-8, 6-9, 9-6。把这些存入hash table会方便许多。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">isStrobogrammatic</span><span class="params">(<span class="built_in">string</span> num)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> p_1 = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> p_2 = num.size() - <span class="number">1</span>;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">char</span>&gt; hash;</div><div class="line">    hash[<span class="string">'0'</span>] = <span class="string">'0'</span>;</div><div class="line">    hash[<span class="string">'1'</span>] = <span class="string">'1'</span>;</div><div class="line">    hash[<span class="string">'8'</span>] = <span class="string">'8'</span>;</div><div class="line">    hash[<span class="string">'6'</span>] = <span class="string">'9'</span>;</div><div class="line">    hash[<span class="string">'9'</span>] = <span class="string">'6'</span>;</div><div class="line">    <span class="keyword">while</span> (p_2 &gt;= p_1) &#123;</div><div class="line">        <span class="keyword">if</span> (hash.count(num[p_1]) == <span class="number">0</span> || hash[num[p_1]] != num[p_2]) &#123;</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        &#125;</div><div class="line">        p_1++;</div><div class="line">        p_2--;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
 
   
   
@@ -520,55 +563,10 @@
     </div>
   
 
-  
-  
-    <div class="post-list">
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/11/leetcode-244/" >
-  leetcode-244. Shortest Word Distance II
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/11/leetcode-244/"><span class="article-date">
-  2016-08-11
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <p>This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your method will be called repeatedly many times with different parameters. How would you optimize it?</p>
-<p>Design a class which receives a list of words in the constructor, and implements a method that takes two words word1 and word2 and return the shortest distance between these two words in the list.</p>
-<p>For example,<br>Assume that words = [“practice”, “makes”, “perfect”, “coding”, “makes”].</p>
-<p>Given word1 = “coding”, word2 = “practice”, return 3.<br>Given word1 = “makes”, word2 = “coding”, return 1.</p>
-<p>Note:<br>You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.<br><a href="https://leetcode.com/problems/shortest-word-distance-ii/" target="_blank" rel="external">原题地址</a></p>
-<p>哈哈哈，人生的大喜大悲不过如此。刚刚还在吐槽zz的解法正中这道题下怀，直接贴上代码。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> WordDistance &#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; hash;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    WordDistance(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.size(); i++)</div><div class="line">            hash[words[i]].push_back(i);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">shortest</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> diff = INT_MAX, i1 = <span class="number">0</span>, i2 = <span class="number">0</span>;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec1 = hash[word1];</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec2 = hash[word2];</div><div class="line">        <span class="keyword">while</span> (i1 &lt; vec1.size() &amp;&amp; i2 &lt; vec2.size()) &#123;</div><div class="line">            <span class="keyword">if</span> (vec1[i1] &lt; vec2[i2])</div><div class="line">                diff = min(diff, vec2[i2] - vec1[i1++]);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                diff = min(diff, vec1[i1] - vec2[i2++]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> diff;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-
-        
-      </div>
-    </div>
-
-  
-    </div>
-  
-
 
 
   <div class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一頁</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next</a>
   </div>
 
 

@@ -8,7 +8,7 @@
 
 <title>
   
-    標籤: leetcode
+    Tag: leetcode
   
 </title>
 
@@ -76,8 +76,8 @@
           
             
               <li class="tag-list-container">
-                <a href="javascript:;">標籤</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
+                <a href="javascript:;">Tag</a>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
               </li>
             
           
@@ -133,6 +133,48 @@
 
     <div class="post-list-item article">
       <h3 class="article-header">
+        <a href="/2016/08/10/leetcode-280/" >
+  leetcode 280. Wiggle Sort
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/10/leetcode-280/"><span class="article-date">
+  2016-08-10
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>Given an unsorted array nums, reorder it in-place such that nums[0] &lt;= nums[1] &gt;= nums[2] &lt;= nums[3]….<br>For example, given nums = [3, 5, 2, 1, 6, 4], one possible answer is [1, 6, 2, 5, 3, 4].<br><a href="https://leetcode.com/problems/wiggle-sort/" target="_blank" rel="external">原题地址</a></p>
+<p>原理很简单，如果发现有违反规则的就跟前一个交换。一开始理解这道题认为就是一大一小交替排列，跑了一遍发现第一个必须是小。代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">wiggleSort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> diff = <span class="number">-1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.size(); i++) &#123;</div><div class="line">        <span class="keyword">int</span> temp = nums[i] - nums[i - <span class="number">1</span>];</div><div class="line">        <span class="keyword">if</span> (diff * temp &gt; <span class="number">0</span>)</div><div class="line">            swap(nums[i - <span class="number">1</span>], nums[i]);</div><div class="line">        diff = -diff;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>看了网上的答案，发现我的脑回路果然跟主流的不一样XD。正常的思路应该是，奇数位的要比前面大，偶数位的要比前面小。代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">wiggleSort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> n = nums.size();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</div><div class="line">        <span class="keyword">if</span> (((i &amp; <span class="number">1</span>) &amp;&amp; nums[i] &lt; nums[i - <span class="number">1</span>]) || (!(i &amp; <span class="number">1</span>) &amp;&amp; nums[i] &gt; nums[i - <span class="number">1</span>]))</div><div class="line">            swap(nums[i], nums[i - <span class="number">1</span>]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
         <a href="/2016/08/10/leetcode三刷/" >
   leetcode三刷
 </a>
@@ -169,7 +211,7 @@
 
 
   <div class="pagination">
-    <a class="extend prev" rel="prev" href="/tags/leetcode/">上一頁</a><a class="page-number" href="/tags/leetcode/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/tags/leetcode/">Prev</a><a class="page-number" href="/tags/leetcode/">1</a><span class="page-number current">2</span>
   </div>
 
 
