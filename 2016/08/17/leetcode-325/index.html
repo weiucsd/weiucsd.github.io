@@ -8,20 +8,23 @@
 
 <title>
   
-    leetcode-244. Shortest Word Distance II
+    leetcode-325. Maximum Size Subarray Sum Equals k
   
 </title>
 
-<meta name="description" content="This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your method will be called repeatedly many times with different parameters. How would you">
+<meta name="description" content="Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn’t one, return 0 instead.
+Example 1:Given nums = [1, -1, 5, -2, 3], k = 3,return 4. (because">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-244. Shortest Word Distance II">
-<meta property="og:url" content="http://weiucsd.github.io/2016/08/11/leetcode-244/index.html">
+<meta property="og:title" content="leetcode-325. Maximum Size Subarray Sum Equals k">
+<meta property="og:url" content="http://weiucsd.github.io/2016/08/17/leetcode-325/index.html">
 <meta property="og:site_name" content="Trivia">
-<meta property="og:description" content="This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your method will be called repeatedly many times with different parameters. How would you">
-<meta property="og:updated_time" content="2016-08-11T23:57:52.000Z">
+<meta property="og:description" content="Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn’t one, return 0 instead.
+Example 1:Given nums = [1, -1, 5, -2, 3], k = 3,return 4. (because">
+<meta property="og:updated_time" content="2016-08-18T00:43:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-244. Shortest Word Distance II">
-<meta name="twitter:description" content="This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your method will be called repeatedly many times with different parameters. How would you">
+<meta name="twitter:title" content="leetcode-325. Maximum Size Subarray Sum Equals k">
+<meta name="twitter:description" content="Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn’t one, return 0 instead.
+Example 1:Given nums = [1, -1, 5, -2, 3], k = 3,return 4. (because">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -127,17 +130,17 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-leetcode-244" class="article article-type-post">
+          <article id="post-leetcode-325" class="article article-type-post">
   
     <h1 class="article-header">
-      leetcode-244. Shortest Word Distance II
+      leetcode-325. Maximum Size Subarray Sum Equals k
     </h1>
   
   
 
   <div class="article-info">
     <span class="article-date">
-  2016-08-11
+  2016-08-17
 </span>
 
     
@@ -150,12 +153,12 @@
 
   </div>
   <div class="article-entry">
-    <p>This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your method will be called repeatedly many times with different parameters. How would you optimize it?</p>
-<p>Design a class which receives a list of words in the constructor, and implements a method that takes two words word1 and word2 and return the shortest distance between these two words in the list.</p>
-<p>For example,<br>Assume that words = [“practice”, “makes”, “perfect”, “coding”, “makes”].</p>
-<p>Given word1 = “coding”, word2 = “practice”, return 3.<br>Given word1 = “makes”, word2 = “coding”, return 1.</p>
-<p>Note:<br>You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.<br><a href="https://leetcode.com/problems/shortest-word-distance-ii/" target="_blank" rel="external">原题地址</a></p>
-<p>哈哈哈，人生的大喜大悲不过如此。刚刚还在吐槽zz的解法正中这道题下怀，直接贴上代码。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> WordDistance &#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; hash;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    WordDistance(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.size(); i++)</div><div class="line">            hash[words[i]].push_back(i);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">shortest</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> diff = INT_MAX, i1 = <span class="number">0</span>, i2 = <span class="number">0</span>;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec1 = hash[word1];</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec2 = hash[word2];</div><div class="line">        <span class="keyword">while</span> (i1 &lt; vec1.size() &amp;&amp; i2 &lt; vec2.size()) &#123;</div><div class="line">            <span class="keyword">if</span> (vec1[i1] &lt; vec2[i2])</div><div class="line">                diff = min(diff, vec2[i2] - vec1[i1++]);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                diff = min(diff, vec1[i1] - vec2[i2++]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> diff;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+    <p>Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn’t one, return 0 instead.</p>
+<p>Example 1:<br>Given nums = [1, -1, 5, -2, 3], k = 3,<br>return 4. (because the subarray [1, -1, 5, -2] sums to 3 and is the longest)</p>
+<p>Example 2:<br>Given nums = [-2, -1, 2, 1], k = 1,<br>return 2. (because the subarray [-1, 2] sums to 1 and is the longest)</p>
+<p>Follow Up:<br>Can you do it in O(n) time?<br><a href="https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/" target="_blank" rel="external">原题地址</a></p>
+<p>利用hash table纪录nums[0]到nums[i]的和，寻找两个和的差等于k的最大距离。Time: O(n). Space: O(n).<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArrayLen</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; hash;</div><div class="line">    <span class="keyword">int</span> run_sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</div><div class="line">        run_sum += nums[i];</div><div class="line">        hash[run_sum].push_back(i);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (hash.count(k) &gt; <span class="number">0</span>) &#123;</div><div class="line">        res = hash[k].back() + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x : hash) &#123;</div><div class="line">        <span class="keyword">if</span> (hash.count(x.first + k) &gt; <span class="number">0</span>) &#123;</div><div class="line">            res = max(res, hash[x.first + k].back() - x.second[<span class="number">0</span>]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>后来发现可以一边存入hash table一边比较，因为只需要和之前的数据求差即可。速度可以更快，代码更简洁。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArrayLen</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hash;</div><div class="line">    <span class="keyword">int</span> run_sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</div><div class="line">        run_sum += nums[i];</div><div class="line">        <span class="keyword">if</span> (run_sum == k) &#123;</div><div class="line">            res = i + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (hash.count(run_sum - k) &gt; <span class="number">0</span>) &#123;</div><div class="line">            res = max(res, i - hash[run_sum - k]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (hash.count(run_sum) == <span class="number">0</span>) &#123;</div><div class="line">            hash[run_sum] = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
   </div>
   <footer class="article-footer">

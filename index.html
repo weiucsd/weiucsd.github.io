@@ -77,7 +77,7 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">Tag</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">12</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
               </li>
             
           
@@ -124,6 +124,95 @@
         <div style="max-width: 1000px">
       
           
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/17/leetcode-340/" >
+  leetcode-340. Longest Substring with At Most K Distinct Characters
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/17/leetcode-340/"><span class="article-date">
+  2016-08-17
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>Given a string, find the length of the longest substring T that contains at most k distinct characters.</p>
+<p>For example, Given s = “eceba” and k = 2,</p>
+<p>T is “ece” which its length is 3.</p>
+<p>Show Company Tags<br>Show Tags<br>Show Similar Problems<br><a href="https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/" target="_blank" rel="external">原题地址</a></p>
+<p>利用hash table统计substring里的字符，类似的以char为key的题都可以用数组来做，会快一些。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstringKDistinct</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; hash;</div><div class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> p_1 = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> p_2 = <span class="number">0</span>; p_2 &lt; s.size(); p_2++) &#123;</div><div class="line">        hash[s[p_2]]++;</div><div class="line">        <span class="keyword">while</span> (hash.size() &gt; k) &#123;</div><div class="line">            <span class="keyword">if</span> (--hash[s[p_1]] == <span class="number">0</span>) &#123;</div><div class="line">                hash.erase(s[p_1]);</div><div class="line">            &#125;</div><div class="line">            p_1++;</div><div class="line">        &#125;</div><div class="line">        res = max(res, p_2 - p_1 + <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
+
+  
+  
+    <div class="post-list">
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/17/leetcode-325/" >
+  leetcode-325. Maximum Size Subarray Sum Equals k
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/17/leetcode-325/"><span class="article-date">
+  2016-08-17
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>Given an array nums and a target value k, find the maximum length of a subarray that sums to k. If there isn’t one, return 0 instead.</p>
+<p>Example 1:<br>Given nums = [1, -1, 5, -2, 3], k = 3,<br>return 4. (because the subarray [1, -1, 5, -2] sums to 3 and is the longest)</p>
+<p>Example 2:<br>Given nums = [-2, -1, 2, 1], k = 1,<br>return 2. (because the subarray [-1, 2] sums to 1 and is the longest)</p>
+<p>Follow Up:<br>Can you do it in O(n) time?<br><a href="https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/" target="_blank" rel="external">原题地址</a></p>
+<p>利用hash table纪录nums[0]到nums[i]的和，寻找两个和的差等于k的最大距离。Time: O(n). Space: O(n).<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArrayLen</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; hash;</div><div class="line">    <span class="keyword">int</span> run_sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</div><div class="line">        run_sum += nums[i];</div><div class="line">        hash[run_sum].push_back(i);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">    <span class="keyword">if</span> (hash.count(k) &gt; <span class="number">0</span>) &#123;</div><div class="line">        res = hash[k].back() + <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; x : hash) &#123;</div><div class="line">        <span class="keyword">if</span> (hash.count(x.first + k) &gt; <span class="number">0</span>) &#123;</div><div class="line">            res = max(res, hash[x.first + k].back() - x.second[<span class="number">0</span>]);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>后来发现可以一边存入hash table一边比较，因为只需要和之前的数据求差即可。速度可以更快，代码更简洁。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">maxSubArrayLen</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; hash;</div><div class="line">    <span class="keyword">int</span> run_sum = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); i++) &#123;</div><div class="line">        run_sum += nums[i];</div><div class="line">        <span class="keyword">if</span> (run_sum == k) &#123;</div><div class="line">            res = i + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (hash.count(run_sum - k) &gt; <span class="number">0</span>) &#123;</div><div class="line">            res = max(res, i - hash[run_sum - k]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (hash.count(run_sum) == <span class="number">0</span>) &#123;</div><div class="line">            hash[run_sum] = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+        
+      </div>
+    </div>
+
+  
+    </div>
+  
 
   
   
@@ -462,98 +551,6 @@
 <p>Note: There will be exactly one celebrity if he/she is in the party. Return the celebrity’s label if there is a celebrity in the party. If there is no celebrity, return -1.<br><a href="https://leetcode.com/problems/find-the-celebrity/" target="_blank" rel="external">原题地址</a></p>
 <p>比较蠢的办法就是对每个人查看，如果他不认识其他人，并且其他人认识他，那他就是celebrity。Time: O(n<sup>2</sup>).<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Forward declaration of the knows API.</span></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">knows</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findCelebrity</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">bool</span> cel = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (i == j) <span class="keyword">continue</span>;</div><div class="line">                <span class="keyword">if</span> (knows(i, j)) &#123;cel = <span class="literal">false</span>; <span class="keyword">break</span>;&#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (!knows(j, i)) &#123;cel = <span class="literal">false</span>; <span class="keyword">break</span>;&#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (cel)    <span class="keyword">return</span> i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>更好的办法是Two pass，第一遍先找到可能是celebrity的人，第二遍验证。Time: O(n).<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Forward declaration of the knows API.</span></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">knows</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findCelebrity</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> cel = <span class="number">0</span>;</div><div class="line">        <span class="comment">// if a knows b, a must not be the celebrity</span></div><div class="line">        <span class="comment">// if b is the celebrity, a will know him, so we won't miss him</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (knows(cel, i))</div><div class="line">                cel = i;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// validate</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i != cel &amp;&amp; (knows(cel, i) || !knows(i, cel)))</div><div class="line">                <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> cel;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-
-        
-      </div>
-    </div>
-
-  
-    </div>
-  
-
-  
-  
-    <div class="post-list">
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/12/scarpy-utf-8/" >
-  scrapy 中文乱码与utf-8
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/12/scarpy-utf-8/"><span class="article-date">
-  2016-08-12
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <p>记录一下刚才解决的有关scrapy中文乱码问题。</p>
-<p>之前在mac上运行scrapy的时候没有关心过这一点，可能是系统默认字符就是utf-8。搬到linux服务器上之后会出现如下的错误。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">UnicodeEncodeError: &apos;latin-1&apos; codec can&apos;t encode characters in position 96-106: ordinal not in range(256)</div></pre></td></tr></table></figure></p>
-<p>而字符串会变成这样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">u&apos;\u98ce\u6b66\u0416\u9f99\u884c&apos;</div></pre></td></tr></table></figure></p>
-<p>经过查找资料和测试，需要修改的地方有两个。一是建表的时候，需要在create table之后加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DEFAULT CHARACTER SET = utf8</div></pre></td></tr></table></figure></p>
-<p>二是在连接到数据库时，在MySQLdb.connect里加上<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">charset =&apos;utf8&apos;</div></pre></td></tr></table></figure></p>
-<p>执行这两步后，即可正常显示中文。</p>
-<p>————————–BTW————————–<br>在做php显示的时候也遇到了乱码的问题，就不另开贴了。在连接到数据库后加上下面的语句即可。<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqli_set_charset($conn,<span class="string">"utf8"</span>);</div></pre></td></tr></table></figure></p>
-
-        
-      </div>
-    </div>
-
-  
-    </div>
-  
-
-  
-  
-    <div class="post-list">
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/11/leetcode-245/" >
-  leetcode-245. Shortest Word Distance III
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/11/leetcode-245/"><span class="article-date">
-  2016-08-11
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <p>This is a follow up of Shortest Word Distance. The only difference is now word1 could be the same as word2.</p>
-<p>Given a list of words and two words word1 and word2, return the shortest distance between these two words in the list.</p>
-<p>word1 and word2 may be the same and they represent two individual words in the list.</p>
-<p>For example,<br>Assume that words = [“practice”, “makes”, “perfect”, “coding”, “makes”].</p>
-<p>Given word1 = “makes”, word2 = “coding”, return 1.<br>Given word1 = “makes”, word2 = “makes”, return 3.</p>
-<p>Note:<br>You may assume word1 and word2 are both in the list.<br><a href="https://leetcode.com/problems/shortest-word-distance-iii/" target="_blank" rel="external">原题地址</a></p>
-<p>比Shortest Word Distance的第三种解法多一个判断。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">shortestWordDistance</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words, <span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> idx = <span class="number">-1</span>, dist = INT_MAX;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.size(); i++) &#123;</div><div class="line">        <span class="keyword">if</span> (words[i] == word1 || words[i] == word2) &#123;</div><div class="line">            <span class="keyword">if</span> (idx != <span class="number">-1</span> &amp;&amp; (word1 == word2 || words[i] != words[idx]))</div><div class="line">                dist = min(dist, i - idx);</div><div class="line">            idx = i;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> dist;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
         
       </div>

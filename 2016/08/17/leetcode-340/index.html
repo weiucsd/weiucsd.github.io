@@ -8,20 +8,29 @@
 
 <title>
   
-    leetcode-244. Shortest Word Distance II
+    leetcode-340. Longest Substring with At Most K Distinct Characters
   
 </title>
 
-<meta name="description" content="This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your method will be called repeatedly many times with different parameters. How would you">
+<meta name="description" content="Given a string, find the length of the longest substring T that contains at most k distinct characters.
+For example, Given s = “eceba” and k = 2,
+T is “ece” which its length is 3.
+Show Company TagsSho">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-244. Shortest Word Distance II">
-<meta property="og:url" content="http://weiucsd.github.io/2016/08/11/leetcode-244/index.html">
+<meta property="og:title" content="leetcode-340. Longest Substring with At Most K Distinct Characters">
+<meta property="og:url" content="http://weiucsd.github.io/2016/08/17/leetcode-340/index.html">
 <meta property="og:site_name" content="Trivia">
-<meta property="og:description" content="This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your method will be called repeatedly many times with different parameters. How would you">
-<meta property="og:updated_time" content="2016-08-11T23:57:52.000Z">
+<meta property="og:description" content="Given a string, find the length of the longest substring T that contains at most k distinct characters.
+For example, Given s = “eceba” and k = 2,
+T is “ece” which its length is 3.
+Show Company TagsSho">
+<meta property="og:updated_time" content="2016-08-18T02:43:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-244. Shortest Word Distance II">
-<meta name="twitter:description" content="This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your method will be called repeatedly many times with different parameters. How would you">
+<meta name="twitter:title" content="leetcode-340. Longest Substring with At Most K Distinct Characters">
+<meta name="twitter:description" content="Given a string, find the length of the longest substring T that contains at most k distinct characters.
+For example, Given s = “eceba” and k = 2,
+T is “ece” which its length is 3.
+Show Company TagsSho">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -127,17 +136,17 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-leetcode-244" class="article article-type-post">
+          <article id="post-leetcode-340" class="article article-type-post">
   
     <h1 class="article-header">
-      leetcode-244. Shortest Word Distance II
+      leetcode-340. Longest Substring with At Most K Distinct Characters
     </h1>
   
   
 
   <div class="article-info">
     <span class="article-date">
-  2016-08-11
+  2016-08-17
 </span>
 
     
@@ -150,12 +159,11 @@
 
   </div>
   <div class="article-entry">
-    <p>This is a follow up of Shortest Word Distance. The only difference is now you are given the list of words and your method will be called repeatedly many times with different parameters. How would you optimize it?</p>
-<p>Design a class which receives a list of words in the constructor, and implements a method that takes two words word1 and word2 and return the shortest distance between these two words in the list.</p>
-<p>For example,<br>Assume that words = [“practice”, “makes”, “perfect”, “coding”, “makes”].</p>
-<p>Given word1 = “coding”, word2 = “practice”, return 3.<br>Given word1 = “makes”, word2 = “coding”, return 1.</p>
-<p>Note:<br>You may assume that word1 does not equal to word2, and word1 and word2 are both in the list.<br><a href="https://leetcode.com/problems/shortest-word-distance-ii/" target="_blank" rel="external">原题地址</a></p>
-<p>哈哈哈，人生的大喜大悲不过如此。刚刚还在吐槽zz的解法正中这道题下怀，直接贴上代码。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> WordDistance &#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; hash;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    WordDistance(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; words.size(); i++)</div><div class="line">            hash[words[i]].push_back(i);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">shortest</span><span class="params">(<span class="built_in">string</span> word1, <span class="built_in">string</span> word2)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> diff = INT_MAX, i1 = <span class="number">0</span>, i2 = <span class="number">0</span>;</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec1 = hash[word1];</div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; vec2 = hash[word2];</div><div class="line">        <span class="keyword">while</span> (i1 &lt; vec1.size() &amp;&amp; i2 &lt; vec2.size()) &#123;</div><div class="line">            <span class="keyword">if</span> (vec1[i1] &lt; vec2[i2])</div><div class="line">                diff = min(diff, vec2[i2] - vec1[i1++]);</div><div class="line">            <span class="keyword">else</span></div><div class="line">                diff = min(diff, vec1[i1] - vec2[i2++]);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> diff;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+    <p>Given a string, find the length of the longest substring T that contains at most k distinct characters.</p>
+<p>For example, Given s = “eceba” and k = 2,</p>
+<p>T is “ece” which its length is 3.</p>
+<p>Show Company Tags<br>Show Tags<br>Show Similar Problems<br><a href="https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/" target="_blank" rel="external">原题地址</a></p>
+<p>利用hash table统计substring里的字符，类似的以char为key的题都可以用数组来做，会快一些。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstringKDistinct</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; hash;</div><div class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> p_1 = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> p_2 = <span class="number">0</span>; p_2 &lt; s.size(); p_2++) &#123;</div><div class="line">        hash[s[p_2]]++;</div><div class="line">        <span class="keyword">while</span> (hash.size() &gt; k) &#123;</div><div class="line">            <span class="keyword">if</span> (--hash[s[p_1]] == <span class="number">0</span>) &#123;</div><div class="line">                hash.erase(s[p_1]);</div><div class="line">            &#125;</div><div class="line">            p_1++;</div><div class="line">        &#125;</div><div class="line">        res = max(res, p_2 - p_1 + <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
   </div>
   <footer class="article-footer">
