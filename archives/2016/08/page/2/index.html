@@ -77,7 +77,7 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">Tag</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">4</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/splash/">splash</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
@@ -135,6 +135,49 @@
           <h1><a href="/archives/2016" class="archive-year">2016</a></h1>
         </div>
         <div class="post-list">
+    
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/13/leetcode-277/" >
+  leetcode-277. Find the Celebrity
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/13/leetcode-277/"><span class="article-date">
+  2016-08-13
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>Suppose you are at a party with n people (labeled from 0 to n - 1) and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know him/her but he/she does not know any of them.</p>
+<p>Now you want to find out who the celebrity is or verify that there is not one. The only thing you are allowed to do is to ask questions like: “Hi, A. Do you know B?” to get information of whether A knows B. You need to find out the celebrity (or verify there is not one) by asking as few questions as possible (in the asymptotic sense).</p>
+<p>You are given a helper function bool knows(a, b) which tells you whether A knows B. Implement a function int findCelebrity(n), your function should minimize the number of calls to knows.</p>
+<p>Note: There will be exactly one celebrity if he/she is in the party. Return the celebrity’s label if there is a celebrity in the party. If there is no celebrity, return -1.<br><a href="https://leetcode.com/problems/find-the-celebrity/" target="_blank" rel="external">原题地址</a></p>
+<p>比较蠢的办法就是对每个人查看，如果他不认识其他人，并且其他人认识他，那他就是celebrity。Time: O(n<sup>2</sup>).<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Forward declaration of the knows API.</span></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">knows</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findCelebrity</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">bool</span> cel = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</div><div class="line">                <span class="keyword">if</span> (i == j) <span class="keyword">continue</span>;</div><div class="line">                <span class="keyword">if</span> (knows(i, j)) &#123;cel = <span class="literal">false</span>; <span class="keyword">break</span>;&#125;</div><div class="line">                <span class="keyword">else</span> <span class="keyword">if</span> (!knows(j, i)) &#123;cel = <span class="literal">false</span>; <span class="keyword">break</span>;&#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (cel)    <span class="keyword">return</span> i;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>更好的办法是Two pass，第一遍先找到可能是celebrity的人，第二遍验证。Time: O(n).<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Forward declaration of the knows API.</span></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">knows</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span></span>;</div><div class="line"></div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">findCelebrity</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</div><div class="line">        <span class="keyword">int</span> cel = <span class="number">0</span>;</div><div class="line">        <span class="comment">// if a knows b, a must not be the celebrity</span></div><div class="line">        <span class="comment">// if b is the celebrity, a will know him, so we won't miss him</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (knows(cel, i))</div><div class="line">                cel = i;</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// validate</span></div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</div><div class="line">            <span class="keyword">if</span> (i != cel &amp;&amp; (knows(cel, i) || !knows(i, cel)))</div><div class="line">                <span class="keyword">return</span> <span class="number">-1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> cel;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+
+        
+      </div>
+    </div>
+
+  
+
+  
+  
     
   
 
@@ -503,48 +546,6 @@
       <div class="article-entry">
         
           <p>之前断断续续刷了两波leetcode，最近面试发现又忘了差不多了。今天借到了一个会员账号，开始三刷之旅。借鉴一下其他博主的经验，这里把做过的题的思路都整理下来，方便以后回顾。我们优先从上锁题开始吧！</p>
-
-        
-      </div>
-    </div>
-
-  
-
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/10/scrapy与crontab的结合/" >
-  scrapy与crontab的结合
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/10/scrapy与crontab的结合/"><span class="article-date">
-  2016-08-10
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/crontab/">crontab</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <p>搞了一天终于能够用crontab自动运行scrapy了。</p>
-<p>首先crontab是一款可以实现自动运行的工具，最短每分钟执行一次。由于我们需要不停的爬取网站信息，所以需要软件在后台自动运行scrapy。方法很简单，规定每到什么时间执行什么命令就可以了。</p>
-<p>那么开始吧，把命令提交给crontab，等了一分钟、两分钟，什么也没有出现。当时我是懵b的，道理我都懂，但是为什么执行不了XD。我的crontab内容是<em> </em> <em> </em> <em> sh xxx.sh，xxx.sh里面就是scrapy crawl yyy。当然，xxx.sh肯定是没有执行成功的，那么干脆把crontab的内容换成</em> <em> </em> <em> </em> echo “Hello”吧。Of course还是什么都没有。这时注意到时不时terminal就来一句：You have new mail. 原来crontab会把每次的执行结果发邮件给我，但至少这说明crontab是好使的。但是sh还是总不成功，在网上看了很多帖子、博客，总是没有get the point. 终于，找到了关键的一句话：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/bin</div></pre></td></tr></table></figure></p>
-<p>原因大概是这样的，crontab执行的时候找不到scrapy这个命令，而这个命令在/usr/local/bin里，所以需要加入这个路径，然后就可以正常执行scrapy了。但是还有一个问题，每分钟一封邮件，一会感觉terminal要炸了XD。这个也找到了答案，可以在<em> </em> <em> </em> * sh xxx.sh后面加上 &gt;&gt; file 2&gt;&amp;1，输出就会写入这个file里了。最后附上清理mail的方法，不然每过一段时间都会提示有new mail。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mail</div><div class="line">$ delete *</div><div class="line">$ q</div></pre></td></tr></table></figure></p>
-<p>写的有些啰嗦，主要是想记录一下今天解决的两个问题。不用把问题交给明天的感觉真好。</p>
 
         
       </div>

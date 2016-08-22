@@ -8,29 +8,20 @@
 
 <title>
   
-    leetcode-340. Longest Substring with At Most K Distinct Characters
+    scrapy-splash爬取动态网站
   
 </title>
 
-<meta name="description" content="Given a string, find the length of the longest substring T that contains at most k distinct characters.
-For example, Given s = “eceba” and k = 2,
-T is “ece” which its length is 3.
-Show Company TagsSho">
+<meta name="description" content="最近网站的进展受到了极大的阻挠，国内几大直播网站（斗鱼，虎牙，战旗，熊猫，龙珠）都用scrapy爬取成功了，但是还有两家（全民，火猫）一直都爬不出来。一开始我是很奇怪的，明明可以用firebug查看到、并且能用Xpath Checker找到所需的信息，为什么scrapy一直失败呢。问题的突破点在于，全民tv的spider并不是完全爬不出来，而是能爬出来一些我不知道是什么的东西。然而今天我无意中查看">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode-340. Longest Substring with At Most K Distinct Characters">
-<meta property="og:url" content="http://weiucsd.github.io/2016/08/17/leetcode-340/index.html">
+<meta property="og:title" content="scrapy-splash爬取动态网站">
+<meta property="og:url" content="http://weiucsd.github.io/2016/08/21/scrapy-splash/index.html">
 <meta property="og:site_name" content="Trivia">
-<meta property="og:description" content="Given a string, find the length of the longest substring T that contains at most k distinct characters.
-For example, Given s = “eceba” and k = 2,
-T is “ece” which its length is 3.
-Show Company TagsSho">
-<meta property="og:updated_time" content="2016-08-18T02:43:42.000Z">
+<meta property="og:description" content="最近网站的进展受到了极大的阻挠，国内几大直播网站（斗鱼，虎牙，战旗，熊猫，龙珠）都用scrapy爬取成功了，但是还有两家（全民，火猫）一直都爬不出来。一开始我是很奇怪的，明明可以用firebug查看到、并且能用Xpath Checker找到所需的信息，为什么scrapy一直失败呢。问题的突破点在于，全民tv的spider并不是完全爬不出来，而是能爬出来一些我不知道是什么的东西。然而今天我无意中查看">
+<meta property="og:updated_time" content="2016-08-22T04:52:37.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode-340. Longest Substring with At Most K Distinct Characters">
-<meta name="twitter:description" content="Given a string, find the length of the longest substring T that contains at most k distinct characters.
-For example, Given s = “eceba” and k = 2,
-T is “ece” which its length is 3.
-Show Company TagsSho">
+<meta name="twitter:title" content="scrapy-splash爬取动态网站">
+<meta name="twitter:description" content="最近网站的进展受到了极大的阻挠，国内几大直播网站（斗鱼，虎牙，战旗，熊猫，龙珠）都用scrapy爬取成功了，但是还有两家（全民，火猫）一直都爬不出来。一开始我是很奇怪的，明明可以用firebug查看到、并且能用Xpath Checker找到所需的信息，为什么scrapy一直失败呢。问题的突破点在于，全民tv的spider并不是完全爬不出来，而是能爬出来一些我不知道是什么的东西。然而今天我无意中查看">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -136,34 +127,38 @@ Show Company TagsSho">
       
         <div style="max-width: 1000px">
       
-          <article id="post-leetcode-340" class="article article-type-post">
+          <article id="post-scrapy-splash" class="article article-type-post">
   
     <h1 class="article-header">
-      leetcode-340. Longest Substring with At Most K Distinct Characters
+      scrapy-splash爬取动态网站
     </h1>
   
   
 
   <div class="article-info">
     <span class="article-date">
-  2016-08-17
+  2016-08-21
 </span>
 
     
 
     
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/splash/">splash</a></li></ul>
 	</span>
 
 
   </div>
   <div class="article-entry">
-    <p>Given a string, find the length of the longest substring T that contains at most k distinct characters.</p>
-<p>For example, Given s = “eceba” and k = 2,</p>
-<p>T is “ece” which its length is 3.</p>
-<p>Show Company Tags<br>Show Tags<br>Show Similar Problems<br><a href="https://leetcode.com/problems/longest-substring-with-at-most-k-distinct-characters/" target="_blank" rel="external">原题地址</a></p>
-<p>利用hash table统计substring里的字符，类似的以char为key的题都可以用数组来做，会快一些。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">lengthOfLongestSubstringKDistinct</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> k)</span> </span>&#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">char</span>, <span class="keyword">int</span>&gt; hash;</div><div class="line">    <span class="keyword">int</span> res = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> p_1 = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> p_2 = <span class="number">0</span>; p_2 &lt; s.size(); p_2++) &#123;</div><div class="line">        hash[s[p_2]]++;</div><div class="line">        <span class="keyword">while</span> (hash.size() &gt; k) &#123;</div><div class="line">            <span class="keyword">if</span> (--hash[s[p_1]] == <span class="number">0</span>) &#123;</div><div class="line">                hash.erase(s[p_1]);</div><div class="line">            &#125;</div><div class="line">            p_1++;</div><div class="line">        &#125;</div><div class="line">        res = max(res, p_2 - p_1 + <span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> res;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+    <p>最近网站的进展受到了极大的阻挠，国内几大直播网站（斗鱼，虎牙，战旗，熊猫，龙珠）都用scrapy爬取成功了，但是还有两家（全民，火猫）一直都爬不出来。一开始我是很奇怪的，明明可以用firebug查看到、并且能用Xpath Checker找到所需的信息，为什么scrapy一直失败呢。问题的突破点在于，全民tv的spider并不是完全爬不出来，而是能爬出来一些我不知道是什么的东西。然而今天我无意中查看全民的源码时，发现源码里是没有当前直播的信息的，而恰好有scrapy爬出来的东西。顺藤摸瓜，我才意识的问题的关键在于全民和火猫是动态网站，更令我惊奇的是之前爬取的都是静态网站。好吧，原谅我这么菜，这么久才知道。</p>
+<p>知道问题的原因就比较好解决了，关于scrapy爬取动态网站的方法网上有许多教程，这里就大概的说一下。主要有两种方法来获取js渲染之后的页面：</p>
+<ol>
+<li>Selenium</li>
+<li>Splash<br>第一种是模拟用户使用浏览器的操作，需要和浏览器配合使用，考虑到服务器上安装浏览器的问题，我选择了第二种。每次安装新的东西都要折腾一段时间，splash也是如此，反正先按官网的说明来，出现什么问题就搜什么问题。好在装好之后，配合scrapy还是比较简单的。首先在settings.py里添加一些属性，然后启动splash：<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -p 5023:5023 -p 8050:8050 -p 8051:8051 scrapinghub/splash</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>可以通过访问(<a href="http://localhost:8050/)来查看js渲染后的页面。然后只需要在原有的spider上加上一段代码即可：" target="_blank" rel="external">http://localhost:8050/)来查看js渲染后的页面。然后只需要在原有的spider上加上一段代码即可：</a><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> scrapy</div><div class="line"><span class="keyword">from</span> scrapy_splash <span class="keyword">import</span> SplashRequest</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MySpider</span><span class="params">(scrapy.Spider)</span>:</span></div><div class="line">	<span class="comment"># ...</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">start_requests</span><span class="params">(self)</span>:</span></div><div class="line">        splash_args = &#123;</div><div class="line">            <span class="string">'wait'</span>: <span class="number">0.5</span>,</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span> url <span class="keyword">in</span> self.start_urls:</div><div class="line">            <span class="keyword">yield</span> SplashRequest(url, self.parse, endpoint=<span class="string">'render.html'</span>, args=splash_args)</div><div class="line">    <span class="comment"># ...</span></div></pre></td></tr></table></figure></p>
+<p>基本就是这样，接下来还要在服务器上再安装一下splash，祝我好运。</p>
 
   </div>
   <footer class="article-footer">
