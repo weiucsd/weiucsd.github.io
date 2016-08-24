@@ -8,23 +8,16 @@
 
 <title>
   
-    Hello World
+    Tag: network
   
 </title>
 
-<meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://weiucsd.github.io/2016/08/04/hello-world/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Trivia">
+<meta property="og:url" content="http://weiucsd.github.io/tags/network/index.html">
 <meta property="og:site_name" content="Trivia">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-08-10T23:07:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="Trivia">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -130,58 +123,62 @@ Quick">
       
         <div style="max-width: 1000px">
       
-          <article id="post-hello-world" class="article article-type-post">
+          <h1>network</h1>
+
+
   
-    <h1 class="article-header">
-      Hello World
-    </h1>
   
+    <div class="post-list">
   
 
-  <div class="article-info">
-    <span class="article-date">
-  2016-08-04
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/24/type-url-in-browser/" >
+  What happens when you type in a URL in browser
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/24/type-url-in-browser/"><span class="article-date">
+  2016-08-24
 </span>
-
-    
-
-    
-
-  </div>
-  <div class="article-entry">
-    <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-  </div>
-  <footer class="article-footer">
-    
-  <div class="cc">
-    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.e" target="_blank" title="Attribution-ShareAlike">
-      <img src="/images/cc/cc.png">
-      
-          <img src="/images/cc/by.png">
+</a>
         
-          <img src="/images/cc/sa.png">
-      
-      <span>
-        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
-      </span>
-    </a>
-  </div>
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li></ul>
+	</span>
 
 
-    
+      </div>
+      <div class="article-entry">
+        
+          <p>It is actually a question from <a href="http://stackoverflow.com/questions/2092527/what-happens-when-you-type-in-a-url-in-browser" target="_blank" rel="external">stackoverflow</a>. Since it is pretty useful, I copy the answer here for convenience.</p>
+<p>In an extremely rough and simplified sketch, assuming the simplest possible HTTP request, no proxies, IPv4 and no problems in any step:</p>
+<ol>
+<li>browser checks cache; if requested object is in cache and is fresh, skip to #9</li>
+<li>browser asks OS for server’s IP address</li>
+<li>OS makes a DNS lookup and replies the IP address to the browser</li>
+<li>browser opens a TCP connection to server (this step is much more complex with HTTPS)</li>
+<li>browser sends the HTTP request through TCP connection</li>
+<li>browser receives HTTP response and may close the TCP connection, or reuse it for another request</li>
+<li>browser checks if the response is a redirect or a conditional response (3xx result status codes), authorization request (401), error (4xx and 5xx), etc.; these are handled differently from normal responses (2xx)</li>
+<li>if cacheable, response is stored in cache</li>
+<li>browser decodes response (e.g. if it’s gzipped)</li>
+<li>browser determines what to do with response (e.g. is it a HTML page, is it an image, is it a sound clip?)</li>
+<li>browser renders response, or offers a download dialog for unrecognized types</li>
+</ol>
 
-  </footer>
-</article>
+        
+      </div>
+    </div>
 
+  
+    </div>
+  
 
 
 

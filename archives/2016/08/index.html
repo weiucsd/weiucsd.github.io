@@ -77,7 +77,7 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">Tag</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/splash/">splash</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/splash/">splash</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
@@ -135,6 +135,58 @@
           <h1><a href="/archives/2016" class="archive-year">2016</a></h1>
         </div>
         <div class="post-list">
+    
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/08/24/type-url-in-browser/" >
+  What happens when you type in a URL in browser
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/08/24/type-url-in-browser/"><span class="article-date">
+  2016-08-24
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network/">network</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>It is actually a question from <a href="http://stackoverflow.com/questions/2092527/what-happens-when-you-type-in-a-url-in-browser" target="_blank" rel="external">stackoverflow</a>. Since it is pretty useful, I copy the answer here for convenience.</p>
+<p>In an extremely rough and simplified sketch, assuming the simplest possible HTTP request, no proxies, IPv4 and no problems in any step:</p>
+<ol>
+<li>browser checks cache; if requested object is in cache and is fresh, skip to #9</li>
+<li>browser asks OS for server’s IP address</li>
+<li>OS makes a DNS lookup and replies the IP address to the browser</li>
+<li>browser opens a TCP connection to server (this step is much more complex with HTTPS)</li>
+<li>browser sends the HTTP request through TCP connection</li>
+<li>browser receives HTTP response and may close the TCP connection, or reuse it for another request</li>
+<li>browser checks if the response is a redirect or a conditional response (3xx result status codes), authorization request (401), error (4xx and 5xx), etc.; these are handled differently from normal responses (2xx)</li>
+<li>if cacheable, response is stored in cache</li>
+<li>browser decodes response (e.g. if it’s gzipped)</li>
+<li>browser determines what to do with response (e.g. is it a HTML page, is it an image, is it a sound clip?)</li>
+<li>browser renders response, or offers a download dialog for unrecognized types</li>
+</ol>
+
+        
+      </div>
+    </div>
+
+  
+
+  
+  
     
   
 
@@ -504,46 +556,6 @@
 <p>// logging string “foo” at timestamp 11<br>logger.shouldPrintMessage(11,”foo”); returns true;<br><a href="https://leetcode.com/problems/logger-rate-limiter/" target="_blank" rel="external">原题地址</a></p>
 <p>Hash table的简单应用。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Logger &#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; hash;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="comment">/** Initialize your data structure here. */</span></div><div class="line">    Logger() &#123;</div><div class="line">        hash = <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt;();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Returns true if the message should be printed in the given timestamp, otherwise returns false.</span></div><div class="line">        If this method returns false, the message will not be printed.</div><div class="line">        The timestamp is in seconds granularity. */</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">shouldPrintMessage</span><span class="params">(<span class="keyword">int</span> timestamp, <span class="built_in">string</span> message)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (hash.count(message) == <span class="number">0</span> || timestamp &gt;= hash[message] + <span class="number">10</span>) &#123;</div><div class="line">            hash[message] = timestamp;</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Your Logger object will be instantiated and called as such:</div><div class="line"> * Logger obj = new Logger();</div><div class="line"> * bool param_1 = obj.shouldPrintMessage(timestamp,message);</div><div class="line"> */</div></pre></td></tr></table></figure></p>
 <p>在网上看到一种更为简洁的写法，mark一下。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> Logger &#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt; hash;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="comment">/** Initialize your data structure here. */</span></div><div class="line">    Logger() &#123;</div><div class="line">        hash = <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="keyword">int</span>&gt;();</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="comment">/** Returns true if the message should be printed in the given timestamp, otherwise returns false.</span></div><div class="line">        If this method returns false, the message will not be printed.</div><div class="line">        The timestamp is in seconds granularity. */</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">shouldPrintMessage</span><span class="params">(<span class="keyword">int</span> timestamp, <span class="built_in">string</span> message)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (timestamp &lt; hash[message])</div><div class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        hash[message] = timestamp + <span class="number">10</span>;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * Your Logger object will be instantiated and called as such:</div><div class="line"> * Logger obj = new Logger();</div><div class="line"> * bool param_1 = obj.shouldPrintMessage(timestamp,message);</div><div class="line"> */</div></pre></td></tr></table></figure></p>
-
-        
-      </div>
-    </div>
-
-  
-
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/13/leetcode-163/" >
-  leetcode-163. Missing Ranges
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/13/leetcode-163/"><span class="article-date">
-  2016-08-13
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <p>Given a sorted integer array where the range of elements are [lower, upper] inclusive, return its missing ranges.</p>
-<p>For example, given [0, 1, 3, 50, 75], lower = 0 and upper = 99, return [“2”, “4-&gt;49”, “51-&gt;74”, “76-&gt;99”].<br><a href="https://leetcode.com/problems/missing-ranges/" target="_blank" rel="external">原题地址</a></p>
-<p>挺简单的一道题，不知道有什么可说的。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; findMissingRanges(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> lower, <span class="keyword">int</span> upper) &#123;</div><div class="line">    nums.push_back(upper + <span class="number">1</span>);</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; re;</div><div class="line">    <span class="keyword">int</span> prev = lower - <span class="number">1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i : nums) &#123;</div><div class="line">        <span class="keyword">if</span> (i &gt; prev + <span class="number">2</span>)</div><div class="line">            re.push_back(to_string(prev + <span class="number">1</span>) + <span class="string">"-&gt;"</span> + to_string(i - <span class="number">1</span>));</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (i == prev + <span class="number">2</span>)</div><div class="line">            re.push_back(to_string(prev + <span class="number">1</span>));</div><div class="line">        prev = i;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> re;</div></pre></td></tr></table></figure></p>
 
         
       </div>
