@@ -8,20 +8,29 @@
 
 <title>
   
-    leetcode 280. Wiggle Sort
+    根据页面响应获取动态页面信息
   
 </title>
 
-<meta name="description" content="Given an unsorted array nums, reorder it in-place such that nums[0] &amp;lt;= nums[1] &amp;gt;= nums[2] &amp;lt;= nums[3]….For example, given nums = [3, 5, 2, 1, 6, 4], one possible answer is [1, 6, 2, 5, 3, 4].原">
+<meta name="description" content="之前写了一篇文章写了如何用splash结合scrapy爬取动态页面的信息，不可否认，splash的功能是很强大的，能够方便的获得加载js的页面，但是在测试的过程中我发现了splash的一些问题。
+
+由于网络的不稳定导致页面的响应时间可能非常长，因此整体爬虫的时间会大幅延长，且不可控。并且因此导致更新时间间隔加长。
+长时间运行splash对服务器压力较大，加上由响应时间过长造成的任务积压，服务器会变">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 280. Wiggle Sort">
-<meta property="og:url" content="http://weiucsd.github.io/2016/08/10/leetcode-280/index.html">
+<meta property="og:title" content="根据页面响应获取动态页面信息">
+<meta property="og:url" content="http://weiucsd.github.io/2016/08/31/crawling-by-analyzing-response/index.html">
 <meta property="og:site_name" content="Trivia">
-<meta property="og:description" content="Given an unsorted array nums, reorder it in-place such that nums[0] &amp;lt;= nums[1] &amp;gt;= nums[2] &amp;lt;= nums[3]….For example, given nums = [3, 5, 2, 1, 6, 4], one possible answer is [1, 6, 2, 5, 3, 4].原">
-<meta property="og:updated_time" content="2016-08-10T23:14:26.000Z">
+<meta property="og:description" content="之前写了一篇文章写了如何用splash结合scrapy爬取动态页面的信息，不可否认，splash的功能是很强大的，能够方便的获得加载js的页面，但是在测试的过程中我发现了splash的一些问题。
+
+由于网络的不稳定导致页面的响应时间可能非常长，因此整体爬虫的时间会大幅延长，且不可控。并且因此导致更新时间间隔加长。
+长时间运行splash对服务器压力较大，加上由响应时间过长造成的任务积压，服务器会变">
+<meta property="og:updated_time" content="2016-09-01T01:02:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 280. Wiggle Sort">
-<meta name="twitter:description" content="Given an unsorted array nums, reorder it in-place such that nums[0] &amp;lt;= nums[1] &amp;gt;= nums[2] &amp;lt;= nums[3]….For example, given nums = [3, 5, 2, 1, 6, 4], one possible answer is [1, 6, 2, 5, 3, 4].原">
+<meta name="twitter:title" content="根据页面响应获取动态页面信息">
+<meta name="twitter:description" content="之前写了一篇文章写了如何用splash结合scrapy爬取动态页面的信息，不可否认，splash的功能是很强大的，能够方便的获得加载js的页面，但是在测试的过程中我发现了splash的一些问题。
+
+由于网络的不稳定导致页面的响应时间可能非常长，因此整体爬虫的时间会大幅延长，且不可控。并且因此导致更新时间间隔加长。
+长时间运行splash对服务器压力较大，加上由响应时间过长造成的任务积压，服务器会变">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -127,32 +136,35 @@
       
         <div style="max-width: 1000px">
       
-          <article id="post-leetcode-280" class="article article-type-post">
+          <article id="post-crawling-by-analyzing-response" class="article article-type-post">
   
     <h1 class="article-header">
-      leetcode 280. Wiggle Sort
+      根据页面响应获取动态页面信息
     </h1>
   
   
 
   <div class="article-info">
     <span class="article-date">
-  2016-08-10
+  2016-08-31
 </span>
 
     
 
     
 	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrapy/">scrapy</a></li></ul>
 	</span>
 
 
   </div>
   <div class="article-entry">
-    <p>Given an unsorted array nums, reorder it in-place such that nums[0] &lt;= nums[1] &gt;= nums[2] &lt;= nums[3]….<br>For example, given nums = [3, 5, 2, 1, 6, 4], one possible answer is [1, 6, 2, 5, 3, 4].<br><a href="https://leetcode.com/problems/wiggle-sort/" target="_blank" rel="external">原题地址</a></p>
-<p>原理很简单，如果发现有违反规则的就跟前一个交换。一开始理解这道题认为就是一大一小交替排列，跑了一遍发现第一个必须是小。代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">wiggleSort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> diff = <span class="number">-1</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nums.size(); i++) &#123;</div><div class="line">        <span class="keyword">int</span> temp = nums[i] - nums[i - <span class="number">1</span>];</div><div class="line">        <span class="keyword">if</span> (diff * temp &gt; <span class="number">0</span>)</div><div class="line">            swap(nums[i - <span class="number">1</span>], nums[i]);</div><div class="line">        diff = -diff;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>看了网上的答案，发现我的脑回路果然跟主流的不一样XD。正常的思路应该是，奇数位的要比前面大，偶数位的要比前面小。代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">wiggleSort</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> n = nums.size();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)</div><div class="line">        <span class="keyword">if</span> (((i &amp; <span class="number">1</span>) &amp;&amp; nums[i] &lt; nums[i - <span class="number">1</span>]) || (!(i &amp; <span class="number">1</span>) &amp;&amp; nums[i] &gt; nums[i - <span class="number">1</span>]))</div><div class="line">            swap(nums[i], nums[i - <span class="number">1</span>]);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+    <p>之前写了一篇文章写了如何用splash结合scrapy爬取动态页面的信息，不可否认，splash的功能是很强大的，能够方便的获得加载js的页面，但是在测试的过程中我发现了splash的一些问题。</p>
+<ol>
+<li>由于网络的不稳定导致页面的响应时间可能非常长，因此整体爬虫的时间会大幅延长，且不可控。并且因此导致更新时间间隔加长。</li>
+<li>长时间运行splash对服务器压力较大，加上由响应时间过长造成的任务积压，服务器会变得卡顿和不稳定。</li>
+</ol>
+<p>在经过对网站功能和服务器资源的分析后，我摒弃使用splash，转而对每个需要访问的页面通过浏览器工具分析其页面的响应。因为我们所需爬取的页面数量是有限的，但是我们需要高频率地去访问这些页面，因此要尽可能减少爬取过程中消耗的时间和资源，把工作做在前面。可以利用Chrome活着Firefox的Debug工具，在network选项里查找页面载入时发送了哪些请求，然后找到我们需要的内容查看Request URL. 这样，我们只需要把scrapy里爬取的网页地址换成这个URL，然后根据响应信息的格式(通常是json)进行处理。如此一来，整个爬取页面的过程会大大加快，而服务器也能稳定运行了。</p>
 
   </div>
   <footer class="article-footer">
