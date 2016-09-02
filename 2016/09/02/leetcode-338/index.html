@@ -8,23 +8,23 @@
 
 <title>
   
-    leetcode 370. Range Addition
+    leetcode-338. Counting Bits
   
 </title>
 
-<meta name="description" content="Assume you have an array of length n initialized with all 0’s and are given k update operations.
-Each operation is represented as a triplet: [startIndex, endIndex, inc] which increments each element o">
+<meta name="description" content="Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and return them as an array.
+Example:For num = 5 you sh">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode 370. Range Addition">
-<meta property="og:url" content="http://weiucsd.github.io/2016/08/10/leetcode-370/index.html">
+<meta property="og:title" content="leetcode-338. Counting Bits">
+<meta property="og:url" content="http://weiucsd.github.io/2016/09/02/leetcode-338/index.html">
 <meta property="og:site_name" content="Trivia">
-<meta property="og:description" content="Assume you have an array of length n initialized with all 0’s and are given k update operations.
-Each operation is represented as a triplet: [startIndex, endIndex, inc] which increments each element o">
-<meta property="og:updated_time" content="2016-08-11T00:10:38.000Z">
+<meta property="og:description" content="Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and return them as an array.
+Example:For num = 5 you sh">
+<meta property="og:updated_time" content="2016-09-02T21:17:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode 370. Range Addition">
-<meta name="twitter:description" content="Assume you have an array of length n initialized with all 0’s and are given k update operations.
-Each operation is represented as a triplet: [startIndex, endIndex, inc] which increments each element o">
+<meta name="twitter:title" content="leetcode-338. Counting Bits">
+<meta name="twitter:description" content="Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and return them as an array.
+Example:For num = 5 you sh">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -130,17 +130,17 @@ Each operation is represented as a triplet: [startIndex, endIndex, inc] which in
       
         <div style="max-width: 1000px">
       
-          <article id="post-leetcode-370" class="article article-type-post">
+          <article id="post-leetcode-338" class="article article-type-post">
   
     <h1 class="article-header">
-      leetcode 370. Range Addition
+      leetcode-338. Counting Bits
     </h1>
   
   
 
   <div class="article-info">
     <span class="article-date">
-  2016-08-10
+  2016-09-02
 </span>
 
     
@@ -153,10 +153,15 @@ Each operation is represented as a triplet: [startIndex, endIndex, inc] which in
 
   </div>
   <div class="article-entry">
-    <p>Assume you have an array of length n initialized with all 0’s and are given k update operations.</p>
-<p>Each operation is represented as a triplet: [startIndex, endIndex, inc] which increments each element of subarray A[startIndex … endIndex] (startIndex and endIndex inclusive) with inc.</p>
-<p>Return the modified array after all k operations were executed.<br><a href="https://leetcode.com/problems/range-addition/" target="_blank" rel="external">原题地址</a></p>
-<p>Google OA题。思路就是先把每一步的操作加、减到开始、结束位，最后累积求和。<br>不知道为什么速度不是很快，代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; getModifiedArray(<span class="keyword">int</span> length, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; updates) &#123;</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; re(length + <span class="number">1</span>, <span class="number">0</span>);</div><div class="line">    <span class="keyword">for</span> (<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp; vec: updates) &#123;</div><div class="line">        re[vec[<span class="number">0</span>]] += vec[<span class="number">2</span>];</div><div class="line">        re[vec[<span class="number">1</span>] + <span class="number">1</span>] -= vec[<span class="number">2</span>];</div><div class="line">    &#125;</div><div class="line">    re.pop_back();</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; length; i++)</div><div class="line">        re[i] += re[i - <span class="number">1</span>];</div><div class="line">    <span class="keyword">return</span> re;        </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+    <p>Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and return them as an array.</p>
+<p>Example:<br>For num = 5 you should return [0,1,1,2,1,2].<br><a href="https://leetcode.com/problems/counting-bits/" target="_blank" rel="external">原题地址</a></p>
+<p>这是一道很简单的找规律题，这里想说下如何寻找规律。核心的思想是去掉一位，因为去除一位之后的数我们是求过的。去除的方法有很多，这里举几个例子：</p>
+<ol>
+<li>去除最低位：右移即可，然后判断末位是否为1. f(i) = f(i &gt;&gt; 1) + f &amp; 1;</li>
+<li>去除最低位的1：f(i) = f(i &amp; (i - 1)) + 1;</li>
+<li>去除最高位的1：维护一个2^n的数，使2^n &lt;= i &lt; 2^(n + 1)，那么f(i) = f(i - 2^n) + 1;</li>
+</ol>
+<p>总之需要记住要跟去掉一位之后的数进行比较。</p>
 
   </div>
   <footer class="article-footer">

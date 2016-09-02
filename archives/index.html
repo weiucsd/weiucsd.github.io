@@ -77,7 +77,7 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">Tag</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/splash/">splash</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">15</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/splash/">splash</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
@@ -135,6 +135,52 @@
           <h1><a href="/archives/2016" class="archive-year">2016</a></h1>
         </div>
         <div class="post-list">
+    
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/09/02/leetcode-338/" >
+  leetcode-338. Counting Bits
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/09/02/leetcode-338/"><span class="article-date">
+  2016-09-02
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and return them as an array.</p>
+<p>Example:<br>For num = 5 you should return [0,1,1,2,1,2].<br><a href="https://leetcode.com/problems/counting-bits/" target="_blank" rel="external">原题地址</a></p>
+<p>这是一道很简单的找规律题，这里想说下如何寻找规律。核心的思想是去掉一位，因为去除一位之后的数我们是求过的。去除的方法有很多，这里举几个例子：</p>
+<ol>
+<li>去除最低位：右移即可，然后判断末位是否为1. f(i) = f(i &gt;&gt; 1) + f &amp; 1;</li>
+<li>去除最低位的1：f(i) = f(i &amp; (i - 1)) + 1;</li>
+<li>去除最高位的1：维护一个2^n的数，使2^n &lt;= i &lt; 2^(n + 1)，那么f(i) = f(i - 2^n) + 1;</li>
+</ol>
+<p>总之需要记住要跟去掉一位之后的数进行比较。</p>
+
+        
+      </div>
+    </div>
+
+  
+
+  
+  
     
   
 
@@ -510,45 +556,6 @@
 <p>Example:<br>Given dictionary = [ “deer”, “door”, “cake”, “card” ]</p>
 <p>isUnique(“dear”) -&gt; false<br>isUnique(“cart”) -&gt; true<br>isUnique(“cane”) -&gt; false<br>isUnique(“make”) -&gt; true<br><a href="https://leetcode.com/problems/unique-word-abbreviation/" target="_blank" rel="external">原题地址</a></p>
 <p>一道easy题，然而并不是很easy。思路很明确，用hashtable记下字典里的缩写，然后比较所给的单词。有一个细节是，如果所给的词在字典里有，并且这个词的缩写在字典的缩写里是唯一的，是要返回true的。直接的解决办法是在hashtable里记下缩写对应的每个单词或者他们的index，但是在网上看到了更好的办法。只需要存一个string，如果有不同单词对应一个缩写就把这个string设为空。代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">class</span> ValidWordAbbr &#123;</div><div class="line">    <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">string</span>&gt; hashmap;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    ValidWordAbbr(<span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt; &amp;dictionary) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="built_in">string</span>&amp; s : dictionary) &#123;</div><div class="line">            <span class="built_in">string</span> abbr = toAbbr(s);</div><div class="line">            <span class="keyword">if</span> (hashmap.count(abbr) &gt; <span class="number">0</span> &amp;&amp; hashmap[abbr] != s)</div><div class="line">                hashmap[abbr] = <span class="string">""</span>;</div><div class="line">            <span class="keyword">else</span></div><div class="line">                hashmap[abbr] = s;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    </div><div class="line">    <span class="function"><span class="built_in">string</span> <span class="title">toAbbr</span><span class="params">(<span class="built_in">string</span> word)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (word.size() &lt;= <span class="number">2</span>)</div><div class="line">            <span class="keyword">return</span> word;</div><div class="line">        <span class="keyword">return</span> word[<span class="number">0</span>] + to_string(word.size() - <span class="number">2</span>) + word.back();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isUnique</span><span class="params">(<span class="built_in">string</span> word)</span> </span>&#123;</div><div class="line">        <span class="built_in">string</span> abbr = toAbbr(word);</div><div class="line">        <span class="keyword">if</span> (hashmap.count(abbr) == <span class="number">0</span> || hashmap[abbr] == word)</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// Your ValidWordAbbr object will be instantiated and called as such:</span></div><div class="line"><span class="comment">// ValidWordAbbr vwa(dictionary);</span></div><div class="line"><span class="comment">// vwa.isUnique("hello");</span></div><div class="line"><span class="comment">// vwa.isUnique("anotherWord");</span></div></pre></td></tr></table></figure></p>
-
-        
-      </div>
-    </div>
-
-  
-
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/15/word-wrap/" >
-  限制文字单行显示，超出部分省略号
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/15/word-wrap/"><span class="article-date">
-  2016-08-15
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <p>需要三句话。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">white-space</span>: <span class="selector-tag">nowrap</span>;</div><div class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</div><div class="line"><span class="selector-tag">text-overflow</span>: <span class="selector-tag">ellipsis</span>;</div></pre></td></tr></table></figure></p>
-<p>解释一下。第一句是说文字显示不换行，第二句说溢出部分隐藏，第三局说溢出时显示省略号。<br>所以能够实现以上功能。</p>
 
         
       </div>
