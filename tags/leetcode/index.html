@@ -160,9 +160,9 @@
 <p>Example:<br>For num = 5 you should return [0,1,1,2,1,2].<br><a href="https://leetcode.com/problems/counting-bits/" target="_blank" rel="external">原题地址</a></p>
 <p>这是一道很简单的找规律题，这里想说下如何寻找规律。核心的思想是去掉一位，因为去除一位之后的数我们是求过的。去除的方法有很多，这里举几个例子：</p>
 <ol>
-<li>去除最低位：右移即可，然后判断末位是否为1. f(i) = f(i &gt;&gt; 1) + f &amp; 1;</li>
-<li>去除最低位的1：f(i) = f(i &amp; (i - 1)) + 1;</li>
-<li>去除最高位的1：维护一个2^n的数，使2^n &lt;= i &lt; 2^(n + 1)，那么f(i) = f(i - 2^n) + 1;</li>
+<li>去除最低位：右移即可，然后判断末位是否为1. f[i] = f[i &gt;&gt; 1] + i &amp; 1;</li>
+<li>去除最低位的1：f[i] = f[i &amp; (i - 1)] + 1;</li>
+<li>去除最高位的1：维护一个2^n的数，使2^n &lt;= i &lt; 2^(n + 1)，那么f[i] = f[i - 2^n] + 1;</li>
 </ol>
 <p>总之需要记住要跟去掉一位之后的数进行比较。</p>
 
