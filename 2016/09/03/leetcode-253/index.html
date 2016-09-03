@@ -8,16 +8,23 @@
 
 <title>
   
-    Archive: 2016/9
+    leetcode-253. Meeting Rooms II
   
 </title>
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Trivia">
-<meta property="og:url" content="http://weiucsd.github.io/archives/2016/09/index.html">
+<meta name="description" content="Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si &amp;lt; ei), find the minimum number of conference rooms required.
+For example,Given [[0, 30],[5, 10],[1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode-253. Meeting Rooms II">
+<meta property="og:url" content="http://weiucsd.github.io/2016/09/03/leetcode-253/index.html">
 <meta property="og:site_name" content="Trivia">
+<meta property="og:description" content="Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si &amp;lt; ei), find the minimum number of conference rooms required.
+For example,Given [[0, 30],[5, 10],[1">
+<meta property="og:updated_time" content="2016-09-03T20:32:01.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Trivia">
+<meta name="twitter:title" content="leetcode-253. Meeting Rooms II">
+<meta name="twitter:description" content="Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si &amp;lt; ei), find the minimum number of conference rooms required.
+For example,Given [[0, 30],[5, 10],[1">
 
 
   <link rel="alternative" href="/atom.xml" title="Trivia" type="application/atom+xml">
@@ -123,142 +130,57 @@
       
         <div style="max-width: 1000px">
       
-          
-
+          <article id="post-leetcode-253" class="article article-type-post">
+  
+    <h1 class="article-header">
+      leetcode-253. Meeting Rooms II
+    </h1>
   
   
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <h1><a href="/archives/2016" class="archive-year">2016</a></h1>
-        </div>
-        <div class="post-list">
-    
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/09/03/leetcode-253/" >
-  leetcode-253. Meeting Rooms II
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/09/03/leetcode-253/"><span class="article-date">
+  <div class="article-info">
+    <span class="article-date">
   2016-09-03
 </span>
-</a>
-        
 
-        
+    
+
+    
 	<span class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
 	</span>
 
 
-      </div>
-      <div class="article-entry">
-        
-          <p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si &lt; ei), find the minimum number of conference rooms required.</p>
+  </div>
+  <div class="article-entry">
+    <p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si &lt; ei), find the minimum number of conference rooms required.</p>
 <p>For example,<br>Given [[0, 30],[5, 10],[15, 20]],<br>return 2.<br><a href="https://leetcode.com/problems/meeting-rooms-ii/" target="_blank" rel="external">原题地址</a></p>
 <p>跟上一道题差不多的思路，我的代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for an interval.</div><div class="line"> * struct Interval &#123;</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() : start(0), end(0) &#123;&#125;</div><div class="line"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"> <span class="keyword">struct</span> comp&#123;</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(Interval itv1, Interval itv2)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> itv1.start &lt; itv2.start;</div><div class="line">    &#125;</div><div class="line"> &#125;;</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minMeetingRooms</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt;&amp; intervals)</span> </span>&#123;</div><div class="line">        sort(intervals.begin(), intervals.end(), comp());</div><div class="line">        <span class="comment">//building a vector indicates the ending time of each room</span></div><div class="line">        <span class="comment">//if a new inteval's start time &lt; all ending time, add a new ending time to the vector</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; rooms;</div><div class="line">        <span class="keyword">for</span> (Interval&amp; itv : intervals) &#123;</div><div class="line">            <span class="keyword">bool</span> addRoom = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rooms.size(); i++) &#123;</div><div class="line">                <span class="keyword">if</span> (itv.start &gt;= rooms[i]) &#123;</div><div class="line">                    rooms[i] = itv.end;</div><div class="line">                    addRoom = <span class="literal">false</span>;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (addRoom) &#123;</div><div class="line">                rooms.push_back(itv.end);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> rooms.size();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>在网上看到一个更好的思路，统计当前时间有多少会议开着。更加简洁明了。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for an interval.</div><div class="line"> * struct Interval &#123;</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() : start(0), end(0) &#123;&#125;</div><div class="line"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minMeetingRooms</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt;&amp; intervals)</span> </span>&#123;</div><div class="line">        <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; changes;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i : intervals) &#123;</div><div class="line">            changes.push_back(&#123;i.start, <span class="number">1</span>&#125;);</div><div class="line">            changes.push_back(&#123;i.end, <span class="number">-1</span>&#125;);</div><div class="line">        &#125;;</div><div class="line">        sort(begin(changes), end(changes));</div><div class="line">        <span class="keyword">int</span> rooms = <span class="number">0</span>, maxrooms = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> change : changes)</div><div class="line">            maxrooms = max(maxrooms, rooms += change.second);</div><div class="line">        <span class="keyword">return</span> maxrooms;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 
-        
-      </div>
-    </div>
-
-  
-
-  
-  
+  </div>
+  <footer class="article-footer">
     
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/09/03/leetcode-252/" >
-  leetcode-252. Meeting Rooms
-</a>
-
-      </h3>
+  <div class="cc">
+    <a href="http://creativecommons.org/licenses/by-sa/4.0/deed.e" target="_blank" title="Attribution-ShareAlike">
+      <img src="/images/cc/cc.png">
       
-
-      <div class="article-info">
-        <a href="/2016/09/03/leetcode-252/"><span class="article-date">
-  2016-09-03
-</span>
-</a>
+          <img src="/images/cc/by.png">
         
+          <img src="/images/cc/sa.png">
+      
+      <span>
+        This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.
+      </span>
+    </a>
+  </div>
 
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</span>
 
-
-      </div>
-      <div class="article-entry">
-        
-          <p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…](si &lt; ei), determine if a person could attend all meetings.</p>
-<p>For example,<br>Given [[0, 30],[5, 10],[15, 20]],<br>return false.<br><a href="https://leetcode.com/problems/meeting-rooms/" target="_blank" rel="external">原题地址</a></p>
-<p>一道easy题，然而我zz一直没有反应过来。首先我们按照start time进行排序，要保证没有重叠的时间段，那么每一次的开始时间不能小于前一次的结束时间，即：一个会开完才能开下一个会。好吧，就这么简单。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for an interval.</div><div class="line"> * struct Interval &#123;</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() : start(0), end(0) &#123;&#125;</div><div class="line"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line">    <span class="comment">// Define a compare function, sort intervals according to start time</span></div><div class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">bool</span> <span class="title">comp</span><span class="params">(<span class="keyword">const</span> Interval&amp; itv1, <span class="keyword">const</span> Interval&amp; itv2)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> itv1.start &lt; itv2.start;</div><div class="line">    &#125;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">canAttendMeetings</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt;&amp; intervals)</span> </span>&#123;</div><div class="line">        sort(intervals.begin(), intervals.end(), comp);</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; intervals.size(); i++) &#123;</div><div class="line">            <span class="keyword">if</span> (intervals[i].start &lt; intervals[i<span class="number">-1</span>].end) &#123;</div><div class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-
-        
-      </div>
-    </div>
-
-  
-
-  
-  
     
-  
 
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/09/02/leetcode-338/" >
-  leetcode-338. Counting Bits
-</a>
+  </footer>
+</article>
 
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/09/02/leetcode-338/"><span class="article-date">
-  2016-09-02
-</span>
-</a>
-        
-
-        
-	<span class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
-	</span>
-
-
-      </div>
-      <div class="article-entry">
-        
-          <p>Given a non negative integer number num. For every numbers i in the range 0 ≤ i ≤ num calculate the number of 1’s in their binary representation and return them as an array.</p>
-<p>Example:<br>For num = 5 you should return [0,1,1,2,1,2].<br><a href="https://leetcode.com/problems/counting-bits/" target="_blank" rel="external">原题地址</a></p>
-<p>这是一道很简单的找规律题，这里想说下如何寻找规律。核心的思想是去掉一位，因为去除一位之后的数我们是求过的。去除的方法有很多，这里举几个例子：</p>
-<ol>
-<li>去除最低位：右移即可，然后判断末位是否为1. f[i] = f[i &gt;&gt; 1] + i &amp; 1;</li>
-<li>去除最低位的1：f[i] = f[i &amp; (i - 1)] + 1;</li>
-<li>去除最高位的1：维护一个2^n的数，使2^n &lt;= i &lt; 2^(n + 1)，那么f[i] = f[i - 2^n] + 1;</li>
-</ol>
-<p>总之需要记住要跟去掉一位之后的数进行比较。</p>
-
-        
-      </div>
-    </div>
-
-  
 
 
 

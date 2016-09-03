@@ -77,7 +77,7 @@
             
               <li class="tag-list-container">
                 <a href="javascript:;">Tag</a>
-                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">16</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/splash/">splash</a><span class="tag-list-count">1</span></li></ul>
+                <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/crontab/">crontab</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/leetcode/">leetcode</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/">mysql</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/network/">network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrapy/">scrapy</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/splash/">splash</a><span class="tag-list-count">1</span></li></ul>
               </li>
             
           
@@ -135,6 +135,47 @@
           <h1><a href="/archives/2016" class="archive-year">2016</a></h1>
         </div>
         <div class="post-list">
+    
+  
+
+    <div class="post-list-item article">
+      <h3 class="article-header">
+        <a href="/2016/09/03/leetcode-253/" >
+  leetcode-253. Meeting Rooms II
+</a>
+
+      </h3>
+      
+
+      <div class="article-info">
+        <a href="/2016/09/03/leetcode-253/"><span class="article-date">
+  2016-09-03
+</span>
+</a>
+        
+
+        
+	<span class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/leetcode/">leetcode</a></li></ul>
+	</span>
+
+
+      </div>
+      <div class="article-entry">
+        
+          <p>Given an array of meeting time intervals consisting of start and end times [[s1,e1],[s2,e2],…] (si &lt; ei), find the minimum number of conference rooms required.</p>
+<p>For example,<br>Given [[0, 30],[5, 10],[15, 20]],<br>return 2.<br><a href="https://leetcode.com/problems/meeting-rooms-ii/" target="_blank" rel="external">原题地址</a></p>
+<p>跟上一道题差不多的思路，我的代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for an interval.</div><div class="line"> * struct Interval &#123;</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() : start(0), end(0) &#123;&#125;</div><div class="line"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"> <span class="keyword">struct</span> comp&#123;</div><div class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">operator</span><span class="params">()</span> <span class="params">(Interval itv1, Interval itv2)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> itv1.start &lt; itv2.start;</div><div class="line">    &#125;</div><div class="line"> &#125;;</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minMeetingRooms</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt;&amp; intervals)</span> </span>&#123;</div><div class="line">        sort(intervals.begin(), intervals.end(), comp());</div><div class="line">        <span class="comment">//building a vector indicates the ending time of each room</span></div><div class="line">        <span class="comment">//if a new inteval's start time &lt; all ending time, add a new ending time to the vector</span></div><div class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; rooms;</div><div class="line">        <span class="keyword">for</span> (Interval&amp; itv : intervals) &#123;</div><div class="line">            <span class="keyword">bool</span> addRoom = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; rooms.size(); i++) &#123;</div><div class="line">                <span class="keyword">if</span> (itv.start &gt;= rooms[i]) &#123;</div><div class="line">                    rooms[i] = itv.end;</div><div class="line">                    addRoom = <span class="literal">false</span>;</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">if</span> (addRoom) &#123;</div><div class="line">                rooms.push_back(itv.end);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> rooms.size();</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>在网上看到一个更好的思路，统计当前时间有多少会议开着。更加简洁明了。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"> * Definition for an interval.</div><div class="line"> * struct Interval &#123;</div><div class="line"> *     int start;</div><div class="line"> *     int end;</div><div class="line"> *     Interval() : start(0), end(0) &#123;&#125;</div><div class="line"> *     Interval(int s, int e) : start(s), end(e) &#123;&#125;</div><div class="line"> * &#125;;</div><div class="line"> */</div><div class="line"><span class="keyword">class</span> Solution &#123;</div><div class="line"><span class="keyword">public</span>:</div><div class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minMeetingRooms</span><span class="params">(<span class="built_in">vector</span>&lt;Interval&gt;&amp; intervals)</span> </span>&#123;</div><div class="line">        <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; changes;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> i : intervals) &#123;</div><div class="line">            changes.push_back(&#123;i.start, <span class="number">1</span>&#125;);</div><div class="line">            changes.push_back(&#123;i.end, <span class="number">-1</span>&#125;);</div><div class="line">        &#125;;</div><div class="line">        sort(begin(changes), end(changes));</div><div class="line">        <span class="keyword">int</span> rooms = <span class="number">0</span>, maxrooms = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> change : changes)</div><div class="line">            maxrooms = max(maxrooms, rooms += change.second);</div><div class="line">        <span class="keyword">return</span> maxrooms;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+
+        
+      </div>
+    </div>
+
+  
+
+  
+  
     
   
 
@@ -525,46 +566,10 @@
 
   
 
-  
-  
-    
-  
-
-    <div class="post-list-item article">
-      <h3 class="article-header">
-        <a href="/2016/08/15/leetcode-311/" >
-  leetcode-311. Sparse Matrix Multiplication
-</a>
-
-      </h3>
-      
-
-      <div class="article-info">
-        <a href="/2016/08/15/leetcode-311/"><span class="article-date">
-  2016-08-15
-</span>
-</a>
-        
-
-        
-
-      </div>
-      <div class="article-entry">
-        
-          <p>Given two sparse matrices A and B, return the result of AB.</p>
-<p>You may assume that A’s column number is equal to B’s row number.<br><a href="https://leetcode.com/problems/sparse-matrix-multiplication/" target="_blank" rel="external">原题地址</a></p>
-<p>虽然归在hash table类别下，似乎不用hash table会更快一些。代码如下：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; multiply(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; A, <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; B) &#123;</div><div class="line">    <span class="keyword">int</span> row = A.size(), col = B[<span class="number">0</span>].size(), n = B.size();</div><div class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; C(row, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(col, <span class="number">0</span>));</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; row; i++) &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; n; k++) &#123;</div><div class="line">            <span class="keyword">if</span> (A[i][k] != <span class="number">0</span>)</div><div class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; col; j++)</div><div class="line">                    <span class="keyword">if</span> (B[k][j] != <span class="number">0</span>)</div><div class="line">                        C[i][j] += A[i][k] * B[k][j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> C;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-
-        
-      </div>
-    </div>
-
-  
-
 
 
   <div class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2016/page/2/">2</a><a class="page-number" href="/archives/2016/page/3/">3</a><a class="extend next" rel="next" href="/archives/2016/page/2/">Next</a>
+    <span class="page-number current">1</span><a class="page-number" href="/archives/2016/page/2/">2</a><a class="page-number" href="/archives/2016/page/3/">3</a><a class="page-number" href="/archives/2016/page/4/">4</a><a class="extend next" rel="next" href="/archives/2016/page/2/">Next</a>
   </div>
 
 
